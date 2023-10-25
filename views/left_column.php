@@ -11,13 +11,13 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                Products
+                                Drinks
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordion_wrapper">
                         <div class="accordion-body">
-                            <a class="nav-link" href="#">Products List</a>
-                            <a class="nav-link" href="#">Add Products</a>
+                            <a class="nav-link" href="#">Drinks List</a>
+                            <a class="nav-link" href="#">Add Drink</a>
                         </div>
                         </div>
                     </div>
