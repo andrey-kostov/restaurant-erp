@@ -11,5 +11,5 @@
 </head>
 <body>
     <header>
-        header
+        <?php echo 'header';?>
     </header>
