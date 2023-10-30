@@ -1,8 +1,9 @@
 <?php
 
-$GLOBALS['DB_Name'] = 'restourant_cms';
-$GLOBALS['DB_User'] = 'root';
-$GLOBALS['DB_Pass'] = '';
-$GLOBALS['DB_Host'] = 'localhost';
+$GLOBALS['db_Name'] = 'restourant_cms';
+$GLOBALS['db_User'] = 'root';
+$GLOBALS['db_Pass'] = '';
+$GLOBALS['db_Host'] = 'localhost';
+$global_root = $_SERVER['DOCUMENT_ROOT'].'restaurant-cms';
 
 ?>
