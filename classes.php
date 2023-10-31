@@ -2,8 +2,9 @@
 
 class Controller {
     function index(){
-        include ('config.php');
-        $test = 'test';
+        require ('config.php');
+        
+        
     }
 }
 
