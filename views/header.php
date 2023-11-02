@@ -6,7 +6,10 @@
     <title><?php echo $headerTitle; ?></title>
 
     <link rel="stylesheet" href="includes/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="includes/style.css">
+    <link rel="stylesheet" href="includes/styles/style.css">
+
+    <script src="includes/bootstrap/js/bootstrap.min.js"></script>
+    <script src="includes/jquery/jquery-3.7.1.min.js"></script>
 
 </head>
 <body>

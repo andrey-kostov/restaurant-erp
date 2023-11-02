@@ -5,7 +5,7 @@
     $headerInstance->index();
 
     //Left Column include
-    include('controllers/left_columnController.php');
+    include('controllers/leftColumnController.php');
     $leftColumnInstance = new LeftColumnController;
     $leftColumnInstance->index();
 
@@ -31,21 +31,22 @@
 
         if (file_exists($controllerFile)) {
             require $controllerFile;
+            // Create an instance of the controller and call the action
+            $controllerClass = $controller . 'Controller';
+            $controllerInstance = new $controllerClass();
+            if (method_exists($controllerInstance, $action)) {
+                $controllerInstance->$action();
+            } else {
+                // Handle action not found error
+                echo "Action not found";
+            }
         } else {
             // Handle controller not found error
             echo "Controller not found";
-            exit;
+            
         }
 
-        // Create an instance of the controller and call the action
-        $controllerClass = $controller . 'Controller';
-        $controllerInstance = new $controllerClass();
-        if (method_exists($controllerInstance, $action)) {
-            $controllerInstance->$action();
-        } else {
-            // Handle action not found error
-            echo "Action not found";
-        }
+        
     ?>
 </div>
 <?php 
