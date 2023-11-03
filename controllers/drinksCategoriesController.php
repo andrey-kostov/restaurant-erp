@@ -9,8 +9,9 @@ class drinksCategoriesController extends Controller{
 
         include('models/drinksModel.php');
         $drinksModelInstance = new drinksModel;
-        $drinksModelInstance->testFuncion();
 
+        $drinksCategories = $drinksModelInstance->getDrinksCategories();
+        
         require 'views/drinks/drinksCategories.php';
     }
 
