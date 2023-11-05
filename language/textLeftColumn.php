@@ -20,7 +20,7 @@
 
     //User texts
     $textDasboardUsers = 'Users';
-    $textDasboarduserList = 'User list';
+    $textDasboardUserList = 'User list';
     $textDasboardUserType = 'User type';
     $textDasboardUserAdd = 'Add user';
 

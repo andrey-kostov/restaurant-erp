@@ -11,7 +11,7 @@
 
     //Body start
 ?>
-<div class="col-sm-9">
+<div class="col-sm-9 main-body">
     <?php
         // Get the requested URL
         $url = isset($_GET['url']) ? $_GET['url'] : '';
