@@ -8,7 +8,7 @@ class drinksCategoriesController extends Controller{
         
         require 'language/textDrinks.php';
 
-        include('models/drinksModel.php');
+        require('models/drinksModel.php');
         $drinksModelInstance = new drinksModel;
 
         $drinksCategories = $drinksModelInstance->getDrinksCategories();
