@@ -5,7 +5,7 @@
         <div class="col-md-2">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="dashboard"> <?php echo $textDasboardDashboard;?></a>
+                    <a class="nav-link" href="activeTables"> <?php echo $textDasboardDashboard;?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="settings"> <?php echo $textDasboardSettings;?></a>
@@ -19,9 +19,8 @@
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordion_wrapper">
                         <div class="accordion-body">
-                            <a class="nav-link" href="drinksCategories"><?php echo $textDasboardDrinksCategories;?></a>
                             <a class="nav-link" href="drinksList"><?php echo $textDasboardDrinksList;?></a>
-                            <a class="nav-link" href="drinksAdd"><?php echo $textDasboardAddDrink;?></a>
+                            <a class="nav-link" href="drinksCategories"><?php echo $textDasboardDrinksCategories;?></a>
                         </div>
                         </div>
                     </div>

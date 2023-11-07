@@ -1,4 +1,6 @@
 <?php 
+    
+
     //Header include
     include('controllers/headerController.php');
     $headerInstance = new headerController;
@@ -18,16 +20,17 @@
 
         // Split the URL into controller and action
         $parts = explode('/', $url);
-        $controller = isset($parts[0]) ? $parts[0] : 'dashboard'; // Default controller
+        $controller = isset($parts[0]) ? $parts[0] : 'activeTables'; // Default controller
         $action = isset($parts[1]) ? $parts[1] : 'index';    // Default action
 
         if($controller == ''){
-            $controller = 'dashboard';
+            $controller = 'activeTables';
         }
+
         
         // Include the appropriate controller file
         $controllerFile = 'controllers/'. $controller . 'Controller.php';
-        
+
 
         if (file_exists($controllerFile)) {
             require $controllerFile;

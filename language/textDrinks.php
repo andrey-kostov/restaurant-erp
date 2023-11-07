@@ -7,7 +7,7 @@
     //Drinks Actions
     $textDrinksCategoriesEditBtn = 'Edit';
     $textDrinksCategoriesRemoveBtn = 'Remove';
-    $textDrinksCategoriesSubmit = 'Submit form';
+    $textDrinksCategoriesSubmit = 'Add new';
 
     //Drinks category table texts
     $textDrinksCategoriesNumber = '#';
@@ -24,4 +24,7 @@
 
     //Drinks add texts
     $textAddDrinkTitle = 'Add drink';
+    $textDrinkHousePrice = 'Price';
+    $textDrinkClientPrice = 'Retail price';
+    $textDrinkProfit = 'Profit';
 ?>

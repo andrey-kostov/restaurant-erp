@@ -1,7 +1,7 @@
 <?php
     //Common texts
     $textDasboardTitle = '';
-    $textDasboardDashboard = 'Dashboard';
+    $textDasboardDashboard = 'Active tables';
     $textDasboardSettings = 'Settings';
     $textDasboardCompletedTables = 'Completed tables';
     $textDasboardStatistics = 'Statistics';

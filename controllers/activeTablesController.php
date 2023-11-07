@@ -1,9 +1,9 @@
 <?php 
 require_once ('classes.php');
 
-class dashboardController extends Controller{
+class activeTablesController extends Controller{
     public function index(){
-        $test = 'This is DASHBOARD';
+        $test = 'Active tables';
 
         echo $test;
     }
