@@ -19,7 +19,8 @@
         $url = isset($_GET['url']) ? $_GET['url'] : '';
 
         // Split the URL into controller and action
-        $parts = explode('/', $url);
+        $firstTrim = explode('?', $url); 
+        $parts = explode('/', $firstTrim[0]);
         $controller = isset($parts[0]) ? $parts[0] : 'activeTables'; // Default controller
         $action = isset($parts[1]) ? $parts[1] : 'index';    // Default action
 

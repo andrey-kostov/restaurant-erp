@@ -3,7 +3,7 @@
         <div class="row">
             <h2 class="card-title"> <?php echo $textAddDrinkTitle; ?> </h2>
             <form id="drinkAddForm" action="drinksList" method="post" enctype="multipart/form-data" class="row g-1">
-                <div class="col-5">
+                <div class="col-4">
                     <div class="input-group">
                         <input type="text" placeholder="<?php echo $textDrinkName; ?>" class="form-control" id="inputDrinkName" name="inputDrinkName" required>
                     </div>
@@ -30,7 +30,7 @@
                         <input type="text" placeholder="<?php echo $textDrinkClientPrice; ?>" class="form-control" id="inputDrinkClientPrice" name="inputDrinkClientPrice" aria-describedby="basic-addon2" required>
                     </div>
                 </div>
-                <div class="col-1">
+                <div class="col-2">
                     <button class="btn btn-primary" type="submit"><?php echo $textDrinksCategoriesSubmit; ?></button>
                 </div>
             </form>
@@ -55,12 +55,11 @@
                                 <tr>
                                     <th scope="row"><?php echo $drink['id'] ?></th>
                                     <td><?php echo $drink['drink_name'] ?></td>
-                                    <td><?php echo $drink['drink_home_price'] ?></td>
-                                    <td><?php echo $drink['drink_price'] ?></td>
                                     <td><?php echo $drink['drink_category'] ?></td>
+                                    <td><?php echo $drink['drink_home_price'].' '.$storeCurrency ?></td>
+                                    <td><?php echo $drink['drink_price'].' '.$storeCurrency ?></td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-danger"><?php echo $textDrinksCategoriesEditBtn; ?></button>
-                                        <button type="button" class="btn btn-sm btn-warning"><?php echo $textDrinksCategoriesRemoveBtn; ?></button>
+                                        <a href="drinksList/edit?drinkId=<?php echo $drink['id'] ?>" type="button" class="btn btn-sm btn-danger"><?php echo $textDrinksCategoriesEditBtn; ?></a>
                                     </td>
                                 </tr>
                                 <?php } ?>   

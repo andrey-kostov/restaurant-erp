@@ -61,7 +61,6 @@
                 $stmt->close();
             }
             $_POST = array();
-            var_dump($_POST);
         }
 
         //Add new drink
@@ -93,7 +92,6 @@
                 $stmt->close();
             }
             $_POST = array();
-            var_dump($_POST);
         }
 
         //Get all drinks category
@@ -117,19 +115,32 @@
             return false;
         }
 
+        //Get single drink
+        public function getSingleDrink($drinkId) {
+            $sql = "SELECT * FROM `drinks` WHERE `drink_id` = ".$drinkId."";
+            $stmt = $this->drinksModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $singleDrink = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+    
+                return $singleDrink; // returns result
+            }
+    
+            return false;
+        }
+
         //Get all drinks 
         public function getAllDrinks() {
             $sql = "SELECT * FROM `drinks`";
             $stmt = $this->drinksModelInstance->prepare($sql);
     
             if ($stmt) {
-                //executes
                 $stmt->execute(); 
-                //gets the results
                 $result = $stmt->get_result(); 
-                //bind them in associative array
                 $drinksCategoriesList = $result->fetch_all(MYSQLI_ASSOC);
-                //closes connection 
                 $stmt->close(); 
     
                 return $drinksCategoriesList; // returns result

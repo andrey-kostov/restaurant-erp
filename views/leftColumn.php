@@ -5,10 +5,10 @@
         <div class="col-md-2">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="activeTables"> <?php echo $textDasboardDashboard;?></a>
+                    <a class="nav-link" href="<?php echo $root; ?>activeTables"> <?php echo $textDasboardDashboard;?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="settings"> <?php echo $textDasboardSettings;?></a>
+                    <a class="nav-link" href="<?php echo $root; ?>settings"> <?php echo $textDasboardSettings;?></a>
                 </li>
                 <li class="accordion" id="accordion_wrapper">
                     <div class="accordion-item">
@@ -19,8 +19,8 @@
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordion_wrapper">
                         <div class="accordion-body">
-                            <a class="nav-link" href="drinksList"><?php echo $textDasboardDrinksList;?></a>
-                            <a class="nav-link" href="drinksCategories"><?php echo $textDasboardDrinksCategories;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>drinksList"><?php echo $textDasboardDrinksList;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>drinksCategories"><?php echo $textDasboardDrinksCategories;?></a>
                         </div>
                         </div>
                     </div>
@@ -32,9 +32,9 @@
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordion_wrapper">
                         <div class="accordion-body">
-                            <a class="nav-link" href="dishesList"><?php echo $textDasboardDishesList;?></a>
-                            <a class="nav-link" href="dishesAdd"><?php echo $textDasboardAddDish;?></a>
-                            <a class="nav-link" href="dishesCategories"><?php echo $textDasboardDishesCategories;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>dishesList"><?php echo $textDasboardDishesList;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>dishesAdd"><?php echo $textDasboardAddDish;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>dishesCategories"><?php echo $textDasboardDishesCategories;?></a>
                         </div>
                         </div>
                     </div>
@@ -46,18 +46,18 @@
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordion_wrapper">
                         <div class="accordion-body">
-                            <a class="nav-link" href="userList"><?php echo $textDasboardUserList;?></a>
-                            <a class="nav-link" href="userType"><?php echo $textDasboardUserType;?></a>
-                            <a class="nav-link" href="userAdd"><?php echo $textDasboardUserAdd;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>userList"><?php echo $textDasboardUserList;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>userType"><?php echo $textDasboardUserType;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>userAdd"><?php echo $textDasboardUserAdd;?></a>
                         </div>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="completedTables"><?php echo $textDasboardCompletedTables;?></a>
+                    <a class="nav-link" href="<?php echo $root; ?>completedTables"><?php echo $textDasboardCompletedTables;?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="statistics"> <?php echo $textDasboardStatistics;?></a>
+                    <a class="nav-link" href="<?php echo $root; ?>statistics"> <?php echo $textDasboardStatistics;?></a>
                 </li>
             </ul>
         </div>

@@ -3,11 +3,13 @@
     //Drinks category section texts
     $textDrinksCategoriesTitle = 'Drinks Categories';
     $textDrinksCategoriesAddCategory = 'Add new category';
+    $textEditDrinkTitle = 'Edit drink';
     
     //Drinks Actions
     $textDrinksCategoriesEditBtn = 'Edit';
     $textDrinksCategoriesRemoveBtn = 'Remove';
     $textDrinksCategoriesSubmit = 'Add new';
+    $textDrinksEditSubmit = 'Submit changes';
 
     //Drinks category table texts
     $textDrinksCategoriesNumber = '#';
