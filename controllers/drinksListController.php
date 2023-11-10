@@ -30,6 +30,24 @@
                 $drinksModelInstance->addDrink($inputDrinkName,$inputDrinkHousePrice,$inputDrinkClientPrice, $inputDrinkCategory);
             }
 
+            //Update drink
+            if (isset($_POST["inputUpdateDrinkId"])) {
+                $inputUpdateDrinkId = $_POST["inputUpdateDrinkId"];
+                $inputUpdateDrinkName = $_POST["inputUpdateDrinkName"];
+                $inputUpdateDrinkCategory = $_POST["inputUpdateDrinkCategory"];
+                $inputUpdateDrinkHousePrice = $_POST["inputUpdateDrinkHousePrice"];
+                $inputUpdateDrinkClientPrice = $_POST["inputUpdateDrinkClientPrice"];
+                $drinksModelInstance->updateDrink($inputUpdateDrinkId,$inputUpdateDrinkName,$inputUpdateDrinkHousePrice,$inputUpdateDrinkClientPrice,$inputUpdateDrinkCategory);
+                
+            }
+
+            //Delete drink
+            if (isset($_POST['action']) && $_POST['action'] == 'deleteDrink') {
+                $drinkId = isset($_POST['drinkId']) ? $_POST['drinkId'] : null;
+
+                $drinksModelInstance->deleteDrink( $drinkId);
+            }
+
             //Get all drinks
             $drinksResult = $drinksModelInstance->getAllDrinks(); 
             $allDrinks = [];
@@ -48,8 +66,6 @@
                 $allDrinks[] = $item;
 
             }
-
-            
            
             require 'views/drinks/drinksList.php';
         }
@@ -57,12 +73,13 @@
         public function edit(){
             require 'models/drinksModel.php';
             require 'language/textDrinks.php';
-
+            require 'config.php';
+            
+            $root = $globalRoot;
             $storeCurrency = 'BGN';
 
             //Get url query
             $url = parse_url($_SERVER['REQUEST_URI']);
-
             // Split the URL 
             $urlQuery = explode('drinkId=',$url['query']);
             
@@ -70,7 +87,6 @@
             $drinksModelInstance = new drinksModel;
             $drinkToEdit =  $drinksModelInstance->getSingleDrink($urlQuery[1]);
             $drinksCategories = $drinksModelInstance->getDrinksCategories();
-
 
             require 'views/drinks/drinksEdit.php';
         }

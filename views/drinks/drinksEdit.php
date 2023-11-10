@@ -1,21 +1,33 @@
 <div class="container-fluid">
     <div class="row">
         <h2 class="card-title"> <?php echo $textEditDrinkTitle; ?> </h2>
-        <form id="drinkAddForm" action="drinksList" method="post" enctype="multipart/form-data" class="row g-1">
+        <form id="drinkUpdateForm" action="<?php echo $root;?>drinksList" method="post" enctype="multipart/form-data" class="row g-1">
+            <div class="col-1 d-none">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        placeholder="<?php echo $textDrinkId; ?>" 
+                        class="form-control" 
+                        id="inputUpdateDrinkId" 
+                        name="inputUpdateDrinkId" 
+                        value="<?php echo $drinkToEdit[0]['drink_id']?>"
+                        required>
+                </div>
+            </div>
             <div class="col-4">
                 <div class="input-group">
                     <input 
                         type="text" 
                         placeholder="<?php echo $textDrinkName; ?>" 
                         class="form-control" 
-                        id="inputDrinkName" 
-                        name="inputDrinkName" 
+                        id="inputUpdateDrinkName" 
+                        name="inputUpdateDrinkName" 
                         value="<?php echo $drinkToEdit[0]['drink_name']?>"
                         required>
                 </div>
             </div>
             <div class="col-2">
-                <select class="form-select" name="inputDrinkCategory">
+                <select class="form-select" name="inputUpdateDrinkCategory">
                     <?php if(isset($drinksCategories)){ ?>
                         <?php foreach ($drinksCategories as $category){ 
                             if($drinkToEdit[0]['drink_category'] == $category['category_id']){ ?>
@@ -35,8 +47,8 @@
                         type="text" 
                         placeholder="<?php echo $textDrinkHousePrice; ?>" 
                         class="form-control" 
-                        id="inputDrinkHousePrice" 
-                        name="inputDrinkHousePrice" 
+                        id="inputUpdateDrinkHousePrice" 
+                        name="inputUpdateDrinkHousePrice" 
                         aria-describedby="basic-addon1" 
                         value="<?php echo $drinkToEdit[0]['drink_home_price']?>"
                         required>
@@ -49,8 +61,8 @@
                         type="text" 
                         placeholder="<?php echo $textDrinkClientPrice; ?>" 
                         class="form-control" 
-                        id="inputDrinkClientPrice" 
-                        name="inputDrinkClientPrice" 
+                        id="inputUpdateDrinkClientPrice" 
+                        name="inputUpdateDrinkClientPrice" 
                         aria-describedby="basic-addon2" 
                         value="<?php echo $drinkToEdit[0]['drink_category']?>"
                         required>

@@ -7,12 +7,13 @@
     
     //Drinks Actions
     $textDrinksCategoriesEditBtn = 'Edit';
-    $textDrinksCategoriesRemoveBtn = 'Remove';
+    $textDrinksCategoriesDeleteBtn = 'Delete';
     $textDrinksCategoriesSubmit = 'Add new';
     $textDrinksEditSubmit = 'Submit changes';
 
     //Drinks category table texts
     $textDrinksCategoriesNumber = '#';
+    $textDrinkId = 'Drink id';
     $textDrinksCategoriesName = 'Category name';
     $textDrinksCategoriesId = 'Category ID';
     $textDrinksCategoriesActions = 'Actions';

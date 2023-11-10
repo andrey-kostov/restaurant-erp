@@ -55,7 +55,7 @@
             $stmt = $this->drinksModelInstance->prepare($sql);
 
             if ($stmt) {
-                //Binds parameters, 's' for string, 'i' for integer
+                //Binds parameters, 's' for string, 'i' for integer, 'd' for float
                 $stmt->bind_param("iis",$lastId,$lastId,$categoryName);
                 $stmt->execute();
                 $stmt->close();
@@ -68,7 +68,10 @@
             //Get last id 
             $sqlA = "SELECT MAX(id) as max_id FROM `drinks`";
             $stmtA = $this->drinksModelInstance->prepare($sqlA);
-    
+            
+            $homePrice = $drinkHomePrice;
+            $price = $drinkPrice;
+
             if ($stmtA) {
                 $stmtA->execute(); 
                 $resultA = mysqli_fetch_array($stmtA->get_result()); 
@@ -86,8 +89,32 @@
             $stmt = $this->drinksModelInstance->prepare($sql);
 
             if ($stmt) {
-                //Binds parameters, 's' for string, 'i' for integer
-                $stmt->bind_param("iisiii",$lastId,$lastId,$drinkName,$drinkHomePrice,$drinkPrice,$drinkCategory);
+                //Binds parameters, 's' for string, 'i' for integer, 'd' for float
+                $stmt->bind_param("iisddi",$lastId,$lastId,$drinkName,$homePrice,$price,$drinkCategory);
+                $stmt->execute();
+                $stmt->close();
+            }
+            $_POST = array();
+        }
+
+        //Uptade drink
+        public function updateDrink($drinkId,$drinkName,$drinkHomePrice,$drinkPrice,$drinkCategory) {
+
+            $sql = "UPDATE drinks SET drink_name = '" . $drinkName . "', drink_home_price = " . $drinkHomePrice . ", drink_price = " . $drinkPrice . ", drink_category = " . $drinkCategory . " WHERE drink_id = " . $drinkId . "";
+            $stmt = $this->drinksModelInstance->prepare($sql);
+            if ($stmt) {
+                $stmt->execute();
+                $stmt->close();
+            }
+            $_POST = array();
+        }
+
+        //Delete drink
+        public function deleteDrink($drinkId) {
+            $sql = "DELETE FROM drinks WHERE drink_id='" . $drinkId . "'";
+            var_dump($sql);
+            $stmt = $this->drinksModelInstance->prepare($sql);
+            if ($stmt) {
                 $stmt->execute();
                 $stmt->close();
             }

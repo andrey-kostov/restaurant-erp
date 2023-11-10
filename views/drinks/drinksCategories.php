@@ -38,7 +38,7 @@
                                 <td><?php echo $category['category_id'] ?></td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-danger"><?php echo $textDrinksCategoriesEditBtn; ?></button>
-                                    <button type="button" class="btn btn-sm btn-warning"><?php echo $textDrinksCategoriesRemoveBtn; ?></button>
+                                    <button type="button" class="btn btn-sm btn-warning"><?php echo $textDrinksCategoriesDeleteBtn; ?></button>
                                 </td>
                             </tr>
                         <?php } ?>   

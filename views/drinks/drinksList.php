@@ -59,13 +59,36 @@
                                     <td><?php echo $drink['drink_home_price'].' '.$storeCurrency ?></td>
                                     <td><?php echo $drink['drink_price'].' '.$storeCurrency ?></td>
                                     <td>
-                                        <a href="drinksList/edit?drinkId=<?php echo $drink['id'] ?>" type="button" class="btn btn-sm btn-danger"><?php echo $textDrinksCategoriesEditBtn; ?></a>
+                                        <a href="drinksList/edit?drinkId=<?php echo $drink['id'] ?>" type="button" class="btn btn-sm btn-warning"><?php echo $textDrinksCategoriesEditBtn; ?></a>
+                                        <button data-drinkId="<?php echo $drink['id'] ?>" type="button" class="btn btn-sm btn-danger"><?php echo $textDrinksCategoriesDeleteBtn; ?></button>
                                     </td>
                                 </tr>
                                 <?php } ?>   
                             </tbody>
                     <?php } ?>
                 </table>
+                <script>
+                    $(document).ready(function() {
+                        $(".btn-sm.btn-danger").click(function() {
+                            let drinkId = $(this).attr('data-drinkId');
+                            console.log(drinkId);   
+                            $.ajax({
+                                type: "POST",
+                                url: "drinksList", // Replace with the correct path to your PHP controller
+                                data: {
+                                    action: "deleteDrink",
+                                    drinkId:drinkId
+                                },
+                                success: function() {
+                                    window.location.reload();
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error("AJAX Request Error:", status, error);
+                                }
+                            });
+                        });
+                    });
+                </script>
             </div>
         </div>
     </div>
