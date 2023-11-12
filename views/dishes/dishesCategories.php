@@ -1,14 +1,14 @@
 <div class="container-fluid">
     <div class="row">
-        <h2 class="card-title"> <?php echo $textDrinksCategoriesAddCategory; ?> </h2>
-        <form id="drinksCategoriesForm" action="drinksCategories" method="post" enctype="multipart/form-data" class="row g-1">
+        <h2 class="card-title"> <?php echo $textDishesCategoriesAddCategory; ?> </h2>
+        <form id="dishesCategoriesForm" action="dishesCategories" method="post" enctype="multipart/form-data" class="row g-1">
             <div class="col-10">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="<?php echo $textDrinksCategoriesName; ?>" id="inputCategoryName" name="inputCategoryName" required>
+                    <input type="text" class="form-control" placeholder="<?php echo $textDishesCategoriesName; ?>" id="inputDishesCategoryName" name="inputDishesCategoryName" required>
                 </div>
             </div>
             <div class="col-2">
-                <button class="btn btn-primary" type="submit"><?php echo $textActionSubmit; ?></button>
+                <button class="btn btn-primary"><?php echo $textActionSubmit; ?></button>
             </div>
         </form>
     </div>
@@ -16,30 +16,30 @@
     <hr>
 
     <div class="row">
-        <h2 class="card-title"> <?php echo $textDrinksCategoriesTitle; ?> </h2>
+        <h2 class="card-title"> <?php echo $textDishesCategoriesTitle; ?> </h2>
         <div class="container-fluid">
             <div class="row">
                 <table class="table table-sm">
                     <thead>
                         <tr>
-                            <th scope="col"><?php echo $textDrinksCategoriesNumber; ?></th>
-                            <th scope="col"><?php echo $textDrinksCategoriesName; ?></th>
-                            <th scope="col"><?php echo $textDrinksCategoriesId; ?></th>
-                            <th scope="col"><?php echo $textDrinksCategoriesActions; ?></th>
+                            <th scope="col"><?php echo $textDishesCategoriesNumber; ?></th>
+                            <th scope="col"><?php echo $textDishesCategoriesName; ?></th>
+                            <th scope="col"><?php echo $textDishesCategoriesId; ?></th>
+                            <th scope="col"><?php echo $textDishesCategoriesActions; ?></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($drinksCategories as $category) { ?>
+                        <?php if(isset($dishesCategories)){foreach ($dishesCategories as $category) { ?>
                             <tr>
                                 <th scope="row"><?php echo $category['id'] ?></th>
                                 <td><?php echo $category['category_name'] ?></td>
                                 <td><?php echo $category['category_id'] ?></td>
                                 <td>
-                                    <a href="drinksCategories/edit?drinkCategoryId=<?php echo $category['category_id'] ?>" type="button" class="btn btn-sm btn-warning"><?php echo $textActionEditBtn; ?></a>
-                                    <button data-drinkCategoryId="<?php echo $category['category_id'] ?>" type="button" class="btn btn-sm btn-danger"><?php echo $textActionDeleteBtn; ?></button>
+                                    <a href="dishesCategories/edit?dishesCategoryId=<?php echo $category['category_id'] ?>" type="button" class="btn btn-sm btn-warning"><?php echo $textActionEditBtn; ?></a>
+                                    <button data-dishesCategoryId="<?php echo $category['category_id'] ?>" type="button" class="btn btn-sm btn-danger"><?php echo $textActionDeleteBtn; ?></button>
                                 </td>
                             </tr>
-                        <?php } ?>
+                        <?php }} ?>
                     </tbody>
                 </table>
 
@@ -52,14 +52,13 @@
     $(document).ready(function() {
         //Delete category
         $(".btn-sm.btn-danger").click(function() {
-            let drinkCategoryId = $(this).attr('data-drinkCategoryId');
-            $('#inputCategoryName').val('');
+            let dishesCategoryId = $(this).attr('data-dishesCategoryId');
             $.ajax({
                 type: "POST",
-                url: "drinksCategories",
+                url: "dishesCategories",
                 data: {
-                    action: "deleteDrinkCategory",
-                    drinkCategoryId: drinkCategoryId
+                    action: "deleteDishesCategory",
+                    dishesCategoryId: dishesCategoryId
                 },
                 success: function() {
                     window.location.reload();
@@ -69,16 +68,17 @@
                 }
             });
         });
-
+        
         //Add category
         $("form .btn-primary").click(function() {
-            let drinksCategoryName = $('#inputCategoryName').val();
+            let dishesCategoryName = $('#inputDishesCategoryName').val();
+            console.log(dishesCategoryName);
             $.ajax({
                 type: "POST",
-                url: "drinksCategories",
+                url: "dishesCategories",
                 data: {
-                    action: "addDrinksCategory",
-                    drinksCategoryName: drinksCategoryName
+                    action: "addDishesCategory",
+                    dishesCategoryName: dishesCategoryName
                 },
                 success: function() {
                     window.location.reload();

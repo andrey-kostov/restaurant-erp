@@ -44,9 +44,10 @@
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon1"><?php echo $storeCurrency; ?></span>
                     <input 
-                        type="text" 
+                        type="number" 
                         placeholder="<?php echo $textDrinkHousePrice; ?>" 
                         class="form-control" 
+                        step="0.01"
                         id="inputUpdateDrinkHousePrice" 
                         name="inputUpdateDrinkHousePrice" 
                         aria-describedby="basic-addon1" 
@@ -58,18 +59,19 @@
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon2"><?php echo $storeCurrency; ?></span>
                     <input 
-                        type="text" 
+                        type="number" 
                         placeholder="<?php echo $textDrinkClientPrice; ?>" 
                         class="form-control" 
+                        step="0.01"
                         id="inputUpdateDrinkClientPrice" 
                         name="inputUpdateDrinkClientPrice" 
                         aria-describedby="basic-addon2" 
-                        value="<?php echo $drinkToEdit[0]['drink_category']?>"
+                        value="<?php echo $drinkToEdit[0]['drink_price']?>"
                         required>
                 </div>
             </div>
             <div class="col-2">
-                <button class="btn btn-primary" type="submit"><?php echo $textDrinksEditSubmit; ?></button>
+                <button class="btn btn-primary" type="submit"><?php echo $textActionUpdate; ?></button>
             </div>
         </form>
     </div>

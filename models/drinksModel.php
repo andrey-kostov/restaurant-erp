@@ -60,7 +60,44 @@
                 $stmt->execute();
                 $stmt->close();
             }
-            $_POST = array();
+        }
+
+        //Uptade drink category
+        public function updateDrinkCategory($drinkCategotyId,$drinkCategoryName) {
+
+            $sql = "UPDATE drinks_categories SET category_name = '" . $drinkCategoryName . "' WHERE category_id = " . $drinkCategotyId . "";
+            $stmt = $this->drinksModelInstance->prepare($sql);
+            if ($stmt) {
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
+
+        //Delete drink category
+        public function deleteCategory($drinkCategoryId) {
+            $sql = "DELETE FROM drinks_categories WHERE category_id='" . $drinkCategoryId . "'";
+            $stmt = $this->drinksModelInstance->prepare($sql);
+            if ($stmt) {
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
+
+        //Get single category
+        public function getSingleDrinkCategory($drinkCategoryId) {
+            $sql = "SELECT * FROM `drinks_categories` WHERE `category_id` = ".$drinkCategoryId."";
+            $stmt = $this->drinksModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $categoryToEdit = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+    
+                return $categoryToEdit; // returns result
+            }
+    
+            return false;
         }
 
         //Add new drink
@@ -112,7 +149,6 @@
         //Delete drink
         public function deleteDrink($drinkId) {
             $sql = "DELETE FROM drinks WHERE drink_id='" . $drinkId . "'";
-            var_dump($sql);
             $stmt = $this->drinksModelInstance->prepare($sql);
             if ($stmt) {
                 $stmt->execute();

@@ -33,8 +33,10 @@
                         <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordion_wrapper">
                         <div class="accordion-body">
                             <a class="nav-link" href="<?php echo $root; ?>dishesList"><?php echo $textDasboardDishesList;?></a>
-                            <a class="nav-link" href="<?php echo $root; ?>dishesAdd"><?php echo $textDasboardAddDish;?></a>
                             <a class="nav-link" href="<?php echo $root; ?>dishesCategories"><?php echo $textDasboardDishesCategories;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>dishesRecepies"><?php echo $textDasboardDishesRececpies;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>dishesIngredients"><?php echo $textDasboardDishesIngredients;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>dishesIngredientsCategories"><?php echo $textDasboardDishesIngredientsCategories;?></a>
                         </div>
                         </div>
                     </div>
