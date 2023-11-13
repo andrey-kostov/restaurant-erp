@@ -4,4 +4,5 @@
     $textActionDeleteBtn = 'Delete';
     $textActionSubmit = 'Add new';
     $textActionUpdate = 'Submit changes';
+    $textCategoriesName = 'Category name';
 ?>

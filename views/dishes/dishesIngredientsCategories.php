@@ -80,7 +80,7 @@
                     dishesIngredientsCategoryName: dishesIngredientsCategoryName
                 },
                 success: function() {
-                    window.location.reload();
+                    setTimeout(window.location.reload(),1000);
                 },
                 error: function(xhr, status, error) {
                     console.error("AJAX Request Error:", status, error);

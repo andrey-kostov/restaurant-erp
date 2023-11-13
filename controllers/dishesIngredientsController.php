@@ -15,8 +15,15 @@
         
             require 'language/textDishes.php';
             require 'language/textCommon.php';
+            require 'config.php';
             require('models/dishesModel.php');
             $dishesModelInstance = new dishesModel;
+
+            $root = $globalRoot;
+            $storeCurrency = $globalCurrency;
+            
+            //Get all drinks categories for the select
+            $ingredientsCategories = $dishesModelInstance->getDishesIngredientsCategories();
     
             require 'views/dishes/dishesIngredients.php';
         }

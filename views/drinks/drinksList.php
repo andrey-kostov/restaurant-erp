@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-2">
                     <select class="form-select" id="inputDrinkCategory" name="inputDrinkCategory">
-                        <option><?php echo $textDrinksCategoriesName; ?></option>
+                        <option><?php echo $textCategoriesName; ?></option>
                         <?php if(isset($drinksCategories)){ ?>
                             <?php foreach ($drinksCategories as $category){ ?>   
                                 <option value="<?php echo $category['category_id'] ?>"><?php echo $category['category_name'] ?></option>
@@ -60,7 +60,7 @@
                         <tr>
                         <th scope="col-1"><?php echo $textDrinkId; ?></th>
                         <th scope="col-4"><?php echo $textDrinkName; ?></th>
-                        <th scope="col-2"><?php echo $textDrinkCategory; ?></th>
+                        <th scope="col-2"><?php echo $textCategoriesName; ?></th>
                         <th scope="col-1"><?php echo $textDrinkHousePrice; ?></th>
                         <th scope="col-1"><?php echo $textDrinkClientPrice; ?></th>
                         <th scope="col-2"><?php echo $textDrinksCategoriesActions; ?></th>

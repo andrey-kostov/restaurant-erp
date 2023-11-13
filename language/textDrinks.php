@@ -9,7 +9,7 @@
     //Drinks category table texts
     $textDrinksCategoriesNumber = '#';
     $textDrinkId = 'Drink id';
-    $textDrinksCategoriesName = 'Category name';
+    
     $textDrinksCategoriesId = 'Category ID';
     $textDrinksCategoriesActions = 'Actions';
 

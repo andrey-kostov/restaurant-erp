@@ -53,7 +53,7 @@
             require 'config.php';
             
             $root = $globalRoot;
-            $storeCurrency = 'BGN';
+            $storeCurrency = $globalCurrency;
     
             //Get url query
             $url = parse_url($_SERVER['REQUEST_URI']);

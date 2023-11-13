@@ -15,8 +15,9 @@
             require 'models/drinksModel.php';
             require 'language/textDrinks.php';
             require 'language/textCommon.php';
+            require 'config.php';
             
-            $storeCurrency = 'BGN';
+            $storeCurrency = $globalCurrency;
 
             //Get all drinks categories for the select
             $drinksModelInstance = new drinksModel;
@@ -79,7 +80,7 @@
             require 'config.php';
             
             $root = $globalRoot;
-            $storeCurrency = 'BGN';
+            $storeCurrency = $globalCurrency;
 
             //Get url query
             $url = parse_url($_SERVER['REQUEST_URI']);

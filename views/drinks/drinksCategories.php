@@ -4,7 +4,7 @@
         <form id="drinksCategoriesForm" action="drinksCategories" method="post" enctype="multipart/form-data" class="row g-1">
             <div class="col-10">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="<?php echo $textDrinksCategoriesName; ?>" id="inputCategoryName" name="inputCategoryName" required>
+                    <input type="text" class="form-control" placeholder="<?php echo $textCategoriesName; ?>" id="inputCategoryName" name="inputCategoryName" required>
                 </div>
             </div>
             <div class="col-2">
@@ -23,7 +23,7 @@
                     <thead>
                         <tr>
                             <th scope="col"><?php echo $textDrinksCategoriesNumber; ?></th>
-                            <th scope="col"><?php echo $textDrinksCategoriesName; ?></th>
+                            <th scope="col"><?php echo $textCategoriesName; ?></th>
                             <th scope="col"><?php echo $textDrinksCategoriesId; ?></th>
                             <th scope="col"><?php echo $textDrinksCategoriesActions; ?></th>
                         </tr>

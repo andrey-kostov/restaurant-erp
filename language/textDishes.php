@@ -10,4 +10,6 @@
     $textEditDishesTitle = 'Edit drink';
     $textDishesIngredientsAddCategory = 'Add new ingredients category';
     $textDishesIngredientsCategoriesTitle = 'Ingredients categories';
+    $textIngredientName = 'Ingredient';
+    $textIngredientPrice = 'Price per kilo';
 ?>  
