@@ -182,6 +182,89 @@
                 $stmt->close();
             }
         }
+
+        //Get all ingredients 
+        public function getAllIngredients() {
+            $sql = "SELECT * FROM `ingredients`";
+            $stmt = $this->dishesModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $allIngredients = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+    
+                return $allIngredients;
+            }
+    
+            return false;
+        }
+
+        //Add new dishes ingredient
+        public function addIngredient($ingredientName,$ingredientCategoryName,$ingredientsPricePerKilo) {
+            //Get last id 
+            $sqlA = "SELECT MAX(ingredient_id) as max_id FROM `ingredients`";
+            $stmtA = $this->dishesModelInstance->prepare($sqlA);
+            
+
+            if ($stmtA) {
+                $stmtA->execute(); 
+                $resultA = mysqli_fetch_array($stmtA->get_result()); 
+                //New id
+                if(isset($resultA['max_id'])){
+                    $lastId = $resultA['max_id'] + 1; 
+                }else{
+                    $lastId = 1;
+                }
+                $stmtA->close(); 
+    
+            }
+
+            $sql = "INSERT INTO `ingredients` ( id, ingredient_id, ingredient_name, ingredient_price, ingredient_category) 
+                            VALUES (?,?,?,?,?) 
+                            ON DUPLICATE KEY UPDATE `ingredient_id` = `ingredient_id` + 1";
+
+            $stmt = $this->dishesModelInstance->prepare($sql);
+
+            if ($stmt) {
+                //Binds parameters, 's' for string, 'i' for integer, 'd' for float
+                $stmt->bind_param("iisdi",$lastId, $lastId,$ingredientName,$ingredientsPricePerKilo,$ingredientCategoryName);
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
+
+        //Delete ingredient
+        public function deleteIngredient($ingredientId) {
+            $sql = "DELETE FROM ingredients WHERE ingredient_id='" . $ingredientId . "'";
+            $stmt = $this->dishesModelInstance->prepare($sql);
+            if ($stmt) {
+                $stmt->execute();
+                $stmt->close();
+            }
+            $_POST = array();
+        }
+
+        //Get ingredient category
+        public function getIngredientsCategory($categoryId) {
+            $sql = "SELECT * FROM `ingredients_categories` WHERE `category_id` = ".$categoryId."";
+            $stmt = $this->dishesModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                //executes
+                $stmt->execute(); 
+                //gets the results
+                $result = $stmt->get_result(); 
+                //bind them in associative array
+                $drinksCategoriesList = $result->fetch_all(MYSQLI_ASSOC);
+                //closes connection 
+                $stmt->close(); 
+    
+                return $drinksCategoriesList; // returns result
+            }
+    
+            return false;
+        }
         
     }
     

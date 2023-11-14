@@ -131,7 +131,6 @@
                 $stmt->execute();
                 $stmt->close();
             }
-            $_POST = array();
         }
 
         //Uptade drink
@@ -157,7 +156,7 @@
             $_POST = array();
         }
 
-        //Get all drinks category
+        //Get drink category
         public function getDrinksCategory($categoryId) {
             $sql = "SELECT * FROM `drinks_categories` WHERE `category_id` = ".$categoryId."";
             $stmt = $this->drinksModelInstance->prepare($sql);
@@ -168,11 +167,11 @@
                 //gets the results
                 $result = $stmt->get_result(); 
                 //bind them in associative array
-                $drinksCategoriesList = $result->fetch_all(MYSQLI_ASSOC);
+                $ingredientCategoriesList = $result->fetch_all(MYSQLI_ASSOC);
                 //closes connection 
                 $stmt->close(); 
     
-                return $drinksCategoriesList; // returns result
+                return $ingredientCategoriesList; // returns result
             }
     
             return false;

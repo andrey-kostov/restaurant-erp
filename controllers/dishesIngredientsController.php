@@ -21,10 +21,44 @@
 
             $root = $globalRoot;
             $storeCurrency = $globalCurrency;
+
             
-            //Get all drinks categories for the select
+            //New ingredient
+             if (isset($_POST['action']) && $_POST['action'] == 'addDishesIngredients') {
+                $ingredientName = isset($_POST['ingredientName']) ? $_POST['ingredientName'] : null;
+                $ingredientCategoryName = isset($_POST['ingredientCategoryName']) ? $_POST['ingredientCategoryName'] : null;
+                $ingredientsPricePerKilo = isset($_POST['ingredientsPricePerKilo']) ? $_POST['ingredientsPricePerKilo'] : null;
+                $dishesModelInstance->addIngredient($ingredientName,$ingredientCategoryName,$ingredientsPricePerKilo);
+            }
+
+            //Delete ingredient
+            if (isset($_POST['action']) && $_POST['action'] == 'deleteDishesIngredients') {
+                $ingredientId = isset($_POST['ingredientId']) ? $_POST['ingredientId'] : null;
+
+                $dishesModelInstance->deleteIngredient( $ingredientId);
+            }
+
+            //Get all ingredient categories for the select
             $ingredientsCategories = $dishesModelInstance->getDishesIngredientsCategories();
-    
+  
+            //Display all ingredients
+            $ingredients = $dishesModelInstance->getAllIngredients(); 
+            $allIngredients = [];
+            foreach ($ingredients as $ingredient){
+                $thisId = $ingredient['ingredient_category'];
+                $thisCategory = $dishesModelInstance->getIngredientsCategory($thisId);
+            
+
+                $item = array(
+                    'id' => $ingredient['id'],
+                    'ingredient_id' => $ingredient['ingredient_id'],
+                    'ingredient_name' => $ingredient['ingredient_name'],
+                    'ingredient_price' => $ingredient['ingredient_price'],
+                    'ingredient_category' => isset($thisCategory[0]['category_name']) ? $thisCategory[0]['category_name'] : 'No category'
+                );
+                $allIngredients[] = $item;
+
+            }
             require 'views/dishes/dishesIngredients.php';
         }
     }

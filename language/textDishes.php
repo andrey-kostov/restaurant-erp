@@ -8,8 +8,13 @@
     $textDishesCategoriesActions = 'Actions';
     $textDishesCategoriesUpdateCategory = 'Update category';
     $textEditDishesTitle = 'Edit drink';
+
+    //Dishes ingredients texts
     $textDishesIngredientsAddCategory = 'Add new ingredients category';
     $textDishesIngredientsCategoriesTitle = 'Ingredients categories';
     $textIngredientName = 'Ingredient';
+    $textIngredients = 'Ingredients:';
+    $textDishesIngredientsAdd = 'Add ingredients';
+    $textDishesIngredientId = 'Ingredient ID';
     $textIngredientPrice = 'Price per kilo';
 ?>  
