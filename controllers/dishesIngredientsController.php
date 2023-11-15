@@ -38,6 +38,15 @@
                 $dishesModelInstance->deleteIngredient( $ingredientId);
             }
 
+            //Update ingredient
+            if (isset($_POST["inputUpdateIngredeintId"])) {
+                $inputUpdateIngredeintId = $_POST["inputUpdateIngredeintId"];
+                $inputUpdateIngredientName = $_POST["inputUpdateIngredientName"];
+                $inputUpdateIngredientCategory = $_POST["inputUpdateIngredientCategory"];
+                $inputUpdateIngredientPrice = $_POST["inputUpdateIngredientPrice"];
+                $dishesModelInstance->updateIngredient($inputUpdateIngredeintId,$inputUpdateIngredientName,$inputUpdateIngredientPrice,$inputUpdateIngredientCategory);
+            }
+
             //Get all ingredient categories for the select
             $ingredientsCategories = $dishesModelInstance->getDishesIngredientsCategories();
   
@@ -59,7 +68,31 @@
                 $allIngredients[] = $item;
 
             }
-            require 'views/dishes/dishesIngredients.php';
+            require 'views/ingredients/dishesIngredients.php';
+        }
+
+        public function edit(){
+            require 'models/dishesModel.php';
+            require 'language/textDishes.php';
+            require 'language/textCommon.php';
+            require 'config.php';
+            
+            $root = $globalRoot;
+            $storeCurrency = $globalCurrency;
+    
+            //Get url query
+            $url = parse_url($_SERVER['REQUEST_URI']);
+            // Split the URL 
+            $urlQuery = explode('ingredientId=',$url['query']);
+
+            //Get the dishes category
+            $dishesModelInstance = new dishesModel;
+            $ingredientToEdit =  $dishesModelInstance->getSingleIngredied($urlQuery[1]);
+
+            //Get all ingredient categories for the select
+            $ingredientsCategories = $dishesModelInstance->getDishesIngredientsCategories();
+    
+            require 'views/ingredients/dishesIngredientsEdit.php';
         }
     }
 

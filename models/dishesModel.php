@@ -256,14 +256,47 @@
                 //gets the results
                 $result = $stmt->get_result(); 
                 //bind them in associative array
-                $drinksCategoriesList = $result->fetch_all(MYSQLI_ASSOC);
+                $ingredientsCategoriesList = $result->fetch_all(MYSQLI_ASSOC);
                 //closes connection 
                 $stmt->close(); 
     
-                return $drinksCategoriesList; // returns result
+                return $ingredientsCategoriesList; // returns result
             }
     
             return false;
+        }
+
+        //Get single ingredient
+        public function getSingleIngredied($ingredientId) {
+            $sql = "SELECT * FROM `ingredients` WHERE `ingredient_id` = ".$ingredientId."";
+            $stmt = $this->dishesModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $singleIngredient = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+    
+                return $singleIngredient; // returns result
+            }
+    
+            return false;
+        }
+
+        //Uptade ingredient
+        public function updateIngredient($ingredientId,$ingredientName,$ingredientPrice,$ingredientCategory) {
+
+            $sql = "UPDATE ingredients 
+                    SET ingredient_name = '" . $ingredientName . "',
+                        ingredient_price = " . $ingredientPrice . ", 
+                        ingredient_category = " . $ingredientCategory . " 
+                    WHERE ingredient_id = " . $ingredientId . "";
+                    
+            $stmt = $this->dishesModelInstance->prepare($sql);
+            if ($stmt) {
+                $stmt->execute();
+                $stmt->close();
+            }
         }
         
     }

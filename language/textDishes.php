@@ -15,6 +15,7 @@
     $textIngredientName = 'Ingredient';
     $textIngredients = 'Ingredients:';
     $textDishesIngredientsAdd = 'Add ingredients';
+    $textDishesIngredientsEdit = 'Edit ingredient';
     $textDishesIngredientId = 'Ingredient ID';
     $textIngredientPrice = 'Price per kilo';
 ?>  

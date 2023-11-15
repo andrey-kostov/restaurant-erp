@@ -41,7 +41,7 @@
             //Display categories
             $dishesIngredientsCategories = $dishesModelInstance->getDishesIngredientsCategories();
     
-            require 'views/dishes/dishesIngredientsCategories.php';
+            require 'views/ingredients/dishesIngredientsCategories.php';
         }
 
         public function edit(){
@@ -62,7 +62,7 @@
             $dishesModelInstance = new dishesModel;
             $categoryToEdit =  $dishesModelInstance->getSingleDishesIngredientsCategory($urlQuery[1]);
     
-            require 'views/dishes/dishesIngredientsCategoriesEdit.php';
+            require 'views/ingredients/dishesIngredientsCategoriesEdit.php';
         }
     }
 

@@ -142,7 +142,6 @@
                 $stmt->execute();
                 $stmt->close();
             }
-            $_POST = array();
         }
 
         //Delete drink
@@ -153,7 +152,6 @@
                 $stmt->execute();
                 $stmt->close();
             }
-            $_POST = array();
         }
 
         //Get drink category

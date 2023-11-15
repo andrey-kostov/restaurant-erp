@@ -66,7 +66,7 @@
                             <td><?php echo $ingredient['ingredient_category'] ?></td>
                             <td><strong><?php echo $ingredient['ingredient_price'].' </strong><small>'.$storeCurrency ?></small></td>
                             <td>
-                                <a href="dishesIngredients/edit?drinkId=<?php echo $ingredient['id'] ?>" type="button" class="btn btn-sm btn-warning"><?php echo $textActionEditBtn; ?></a>
+                                <a href="dishesIngredients/edit?ingredientId=<?php echo $ingredient['id'] ?>" type="button" class="btn btn-sm btn-warning"><?php echo $textActionEditBtn; ?></a>
                                 <button data-ingredientId="<?php echo $ingredient['id'] ?>" type="button" class="btn btn-sm btn-danger"><?php echo $textActionDeleteBtn; ?></button>
                             </td>
                         </tr>
