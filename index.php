@@ -1,22 +1,30 @@
 <?php 
-    
+    // Get the requested URL
+    $url = isset($_GET['url']) ? $_GET['url'] : '';
+    //Check if is ajax function
+    $haystack = $url;
+    $needle = 'ajax';
+    if (strpos($haystack, $needle) !== false) {
+        $isAjax = true;
+    } else{
+        $isAjax = false;
+    }
 
-    //Header include
-    include('controllers/headerController.php');
-    $headerInstance = new headerController;
-    $headerInstance->index();
+    if($isAjax === false){
+        //Header include
+        include('controllers/headerController.php');
+        $headerInstance = new headerController;
+        $headerInstance->index();
 
-    //Left Column include
-    include('controllers/leftColumnController.php');
-    $leftColumnInstance = new LeftColumnController;
-    $leftColumnInstance->index();
+        //Left Column include
+        include('controllers/leftColumnController.php');
+        $leftColumnInstance = new LeftColumnController;
+        $leftColumnInstance->index();
+        
+        //Body start
+        echo '<div class="col-sm-9 main-body">';
+    }
 
-    //Body start
-?>
-<div class="col-sm-9 main-body">
-    <?php
-        // Get the requested URL
-        $url = isset($_GET['url']) ? $_GET['url'] : '';
 
         // Split the URL into controller and action
         $firstTrim = explode('?', $url); 
@@ -50,15 +58,13 @@
             
         }
 
+    if($isAjax === false){
+        //Body End
+        echo '</div>';
         
-    ?>
-</div>
-<?php 
-
-    //Body End
-
-    //Footer include
-    include('controllers/footerController.php');
-    $footerInstance = new footerController;
-    $footerInstance->index();
+        //Footer include
+        include('controllers/footerController.php');
+        $footerInstance = new footerController;
+        $footerInstance->index();
+    }
 ?>

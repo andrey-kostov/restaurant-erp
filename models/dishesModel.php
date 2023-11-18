@@ -298,7 +298,23 @@
                 $stmt->close();
             }
         }
-        
+
+        //Search for ingredients 
+        public function searchIngredients($searchIngredients) {
+            $sql = "SELECT * FROM `ingredients` WHERE `ingredient_name` LIKE '%".$searchIngredients."%'";
+            $stmt = $this->dishesModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $ingredientsResults = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+
+                return $ingredientsResults; // returns result
+            }
+    
+            return false;
+        }
     }
     
 ?>

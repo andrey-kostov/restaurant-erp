@@ -16,6 +16,10 @@
             require 'language/textDishes.php';
             require 'language/textCommon.php';
             require('models/dishesModel.php');
+            require 'config.php';
+        
+            $root = $globalRoot;
+            $storeCurrency = $globalCurrency;
             $dishesModelInstance = new dishesModel;
     
             
@@ -41,9 +45,26 @@
             // }
             
             // //Display categories
-            // $dishesCategories = $dishesModelInstance->getdishesCategories();
+            $dishesCategories = $dishesModelInstance->getdishesCategories();
+            
+            
+
+            
             
             require 'views/dishes/dishesList.php';
+        }
+
+        function ajaxSearchIngredients(){
+            //Search for ingredients
+            if (isset($_POST['action']) && $_POST['action'] == 'searchIngredients') {
+                require('models/dishesModel.php');
+                $dishesModelInstance = new dishesModel;
+                    
+                $searchIngredients = $_POST["searchedVal"];
+                $searchResults = $dishesModelInstance->searchIngredients($searchIngredients);
+                
+                echo json_encode(['searchResults' => $searchResults]);
+            }
         }
     }
 
