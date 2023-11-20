@@ -74,7 +74,7 @@
                 <div class="col-2">
                     <label class=" col-12 form-label"><?php echo $textDishPriceSuggested; ?></label>
                     <span class="col-12" id="suggestedPrice">
-                        <span id="suggestedPriceValue"></span>
+                        <strong id="suggestedPriceValue">0</strong>
                         <span id="suggestedPriceCurrency"><?php echo $storeCurrency; ?></span>
                     </span>
                 </div>
@@ -165,9 +165,9 @@
         let ingredientRow = '<tr id="ingredient'+ingredientId+'">';
             ingredientRow += '<td>'+ingredientName+'</td>';
             ingredientRow += '<td>'+ingredientId+'</td>';
-            ingredientRow += '<td><strong>'+ingredientPrice+'</strong> <small><?php echo $storeCurrency; ?></small></td>';
-            ingredientRow += '<td><input type="number" step="5" class="form-control" placeholder="<?php echo $textDishQuantity; ?>" required></td>';
-            ingredientRow += '<td><strong>0</strong> <small><?php echo $storeCurrency; ?></small></td>';
+            ingredientRow += '<td class="ingredientPricePerKilo"><strong>'+ingredientPrice+'</strong> <small><?php echo $storeCurrency; ?></small></td>';
+            ingredientRow += '<td><input type="number" step="5" class="form-control ingredientQtyInput" placeholder="<?php echo $textDishQuantity; ?>" required></td>';
+            ingredientRow += '<td class="ingredientFinalPrice"><strong>0</strong> <small><?php echo $storeCurrency; ?></small></td>';
             ingredientRow += '<td><button class="btn btn-danger removeIngredient"><?php echo $textActionDeleteBtn; ?></button></td>';
             ingredientRow += '/<tr>';
         
@@ -176,6 +176,25 @@
         }else{
             $('#ingredientsWrapper tbody').append(ingredientRow);
         }
+
+    });
+
+    $(document).on('change keyup paste','.ingredientQtyInput',function(){
+        let parentId = $(this).parents('tr').attr('id');
+        let pricePerKilo = $('#'+parentId).find('.ingredientPricePerKilo strong').text();
+        let priceToWork = pricePerKilo / 200; //200 times 5 grams make a kilo
+        let ingredientQty = $('#'+parentId).find('.ingredientQtyInput').val();
+        let ingredientPrice = ingredientQty * priceToWork;
+        let priceWrapper = $('#'+parentId).find('.ingredientFinalPrice');
+        
+        priceWrapper.find('strong').html((ingredientPrice).toFixed(3));
+
+        $('.ingredientFinalPrice strong').each(function(){
+            suggestedPrice = parseFloat($('#suggestedPriceValue').text());
+            let eachFinalPrice = parseFloat($(this).text());
+            suggestedPrice = suggestedPrice + eachFinalPrice;
+            $('#suggestedPriceValue').text((suggestedPrice).toFixed(3));
+        });
 
     });
 </script>
