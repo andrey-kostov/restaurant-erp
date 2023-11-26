@@ -205,7 +205,6 @@
             //Get last id 
             $sqlA = "SELECT MAX(ingredient_id) as max_id FROM `ingredients`";
             $stmtA = $this->dishesModelInstance->prepare($sqlA);
-            
 
             if ($stmtA) {
                 $stmtA->execute(); 
@@ -217,7 +216,6 @@
                     $lastId = 1;
                 }
                 $stmtA->close(); 
-    
             }
 
             $sql = "INSERT INTO `ingredients` ( id, ingredient_id, ingredient_name, ingredient_price, ingredient_category) 
@@ -314,6 +312,38 @@
             }
     
             return false;
+        }
+
+        //Add new dishes ingredient
+        public function addNewDish($formDishName, $formDishCategory, $formDishRecepie, $formDishIngredients,$formDishPrice) {
+            //Get last id 
+            $sqlA = "SELECT MAX(dish_id) as max_id FROM `dishes`";
+            $stmtA = $this->dishesModelInstance->prepare($sqlA);
+
+            if ($stmtA) {
+                $stmtA->execute(); 
+                $resultA = mysqli_fetch_array($stmtA->get_result()); 
+                //New id
+                if(isset($resultA['max_id'])){
+                    $lastId = $resultA['max_id'] + 1; 
+                }else{
+                    $lastId = 1;
+                }
+                $stmtA->close(); 
+            }
+
+            $sql = "INSERT INTO `dishes` ( id, dish_id, dish_name, dish_category, dish_recepie, dish_ingredients, dish_price) 
+                            VALUES (?,?,?,?,?,?,?) 
+                            ON DUPLICATE KEY UPDATE `dish_id` = `dish_id` + 1";
+
+            $stmt = $this->dishesModelInstance->prepare($sql);
+
+            if ($stmt) {
+                //Binds parameters, 's' for string, 'i' for integer, 'd' for float
+                $stmt->bind_param("iisissd",$lastId,$lastId,$formDishName,$formDishCategory,$formDishRecepie,$formDishIngredients,$formDishPrice);
+                $stmt->execute();
+                $stmt->close();
+            }
         }
     }
     

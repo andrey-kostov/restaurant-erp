@@ -30,14 +30,17 @@
             <hr>
 
             <div class="row mb-3">
-                <h3><?php echo $textDishRecepie ?></h3>
+                <h3><?php echo $textDishRecepie; ?></h3>
                 <div class="col-12">
                     <div class="input-group">
                         <textarea 
+                            cols="42" 
+                            rows="5"
                             class="form-control" 
                             id="inputDishRecepie" 
-                            name="inputDishRecepie" required>
-                        </textarea>
+                            name="inputDishRecepie"
+                            placeholder="<?php echo $textDishRecepie; ?>"
+                            required></textarea>
                     </div>
                 </div>
             </div>
@@ -99,7 +102,7 @@
 
             <div class="row mb-3">
                 <div class="col-2">
-                    <button class="btn btn-primary"><?php echo $textActionSubmit; ?></button>
+                    <button id="submitDishForm" class="btn btn-primary"><?php echo $textActionSubmit; ?></button>
                 </div>
             </div>
         </form>
@@ -162,11 +165,11 @@
             ingredientId = $(this).attr('ingId'),
             ingredientPrice = $(this).attr('ingPrice');
 
-        let ingredientRow = '<tr id="ingredient'+ingredientId+'">';
-            ingredientRow += '<td>'+ingredientName+'</td>';
-            ingredientRow += '<td>'+ingredientId+'</td>';
+        let ingredientRow = '<tr class="ingredientRow" id="ingredient'+ingredientId+'">';
+            ingredientRow += '<td class="ingredientName">'+ingredientName+'</td>';
+            ingredientRow += '<td class="ingredientId">'+ingredientId+'</td>';
             ingredientRow += '<td class="ingredientPricePerKilo"><strong>'+ingredientPrice+'</strong> <small><?php echo $storeCurrency; ?></small></td>';
-            ingredientRow += '<td><input type="number" step="5" class="form-control ingredientQtyInput" placeholder="<?php echo $textDishQuantity; ?>" required></td>';
+            ingredientRow += '<td class="ingredientQty"><input type="number" step="5" class="form-control ingredientQtyInput" placeholder="<?php echo $textDishQuantity; ?>" required></td>';
             ingredientRow += '<td class="ingredientFinalPrice"><strong>0</strong> <small><?php echo $storeCurrency; ?></small></td>';
             ingredientRow += '<td><button class="btn btn-danger removeIngredient"><?php echo $textActionDeleteBtn; ?></button></td>';
             ingredientRow += '/<tr>';
@@ -180,12 +183,12 @@
     });
 
     $(document).on('change keyup paste','.ingredientQtyInput',function(){
-        let parentId = $(this).parents('tr').attr('id');
-        let pricePerKilo = $('#'+parentId).find('.ingredientPricePerKilo strong').text();
-        let priceToWork = pricePerKilo / 200; //200 times 5 grams make a kilo
-        let ingredientQty = $('#'+parentId).find('.ingredientQtyInput').val();
-        let ingredientPrice = ingredientQty * priceToWork;
-        let priceWrapper = $('#'+parentId).find('.ingredientFinalPrice');
+        let parentId = $(this).parents('tr').attr('id'),
+            pricePerKilo = $('#'+parentId).find('.ingredientPricePerKilo strong').text(),
+            priceToWork = pricePerKilo / 200, //200 times 5 grams make a kilo
+            ingredientQty = $('#'+parentId).find('.ingredientQtyInput').val(),
+            ingredientPrice = ingredientQty * priceToWork,
+            priceWrapper = $('#'+parentId).find('.ingredientFinalPrice');
         
         priceWrapper.find('strong').html((ingredientPrice).toFixed(3));
 
@@ -197,4 +200,51 @@
         });
 
     });
+
+    $(document).on('click','#submitDishForm',function(event){
+        event.preventDefault();
+        var formDishName = $('#inputDishName').val(),
+            formDishCategory = $('#dishCategory').find(":selected").attr('value'),
+            formDishRecepie = $('#inputDishRecepie').val(),
+            formDishIngredients = [],
+            formDishPrice = $('#inputDishPrice').val();
+
+        $('.ingredientRow').each(function(){
+            var ingredientInformation = {};
+
+            var ingredientName = $(this).find('.ingredientName').text(),
+                ingredientId = $(this).find('.ingredientId').text(),
+                ingredientPriceKilo = $(this).find('.ingredientPricePerKilo strong').text(),
+                ingredientQtyGrams = $(this).find('.ingredientQty input').val(),
+                ingredientPrice = $(this).find('.ingredientFinalPrice strong').text();
+
+            ingredientInformation['ingredientName'] = ingredientName;
+            ingredientInformation['ingredientId'] = ingredientId;
+            ingredientInformation['ingredientPriceKilo'] = ingredientPriceKilo;
+            ingredientInformation['ingredientQtyGrams'] = ingredientQtyGrams;
+            ingredientInformation['ingredientPrice'] = ingredientPrice;
+
+            formDishIngredients.push(JSON.stringify(ingredientInformation));
+            
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "dishesList",
+            data: {
+                action: "addNewDish",
+                formDishName: formDishName,
+                formDishCategory: formDishCategory,
+                formDishRecepie: formDishRecepie,
+                formDishIngredients: formDishIngredients,
+                formDishPrice: formDishPrice
+            },
+            success: function() {
+                window.location.reload();
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Request Error:", status, error);
+            }
+        });
+    })
 </script>

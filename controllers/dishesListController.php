@@ -23,11 +23,16 @@
             $dishesModelInstance = new dishesModel;
     
             
-            // //Add new drink category
-            // if (isset($_POST["inputCategoryName"])) {
-            //     $categoryName = $_POST["inputCategoryName"];
-            //     $dishesModelInstance->adddishesCategories($categoryName);
-            // }
+            //Add new dish
+            if (isset($_POST["action"]) && $_POST['action'] == 'addNewDish') {
+                $formDishName = $_POST["formDishName"];
+                $formDishCategory = $_POST["formDishCategory"];
+                $formDishRecepie = $_POST["formDishRecepie"];
+                $formDishIngredients = serialize($_POST["formDishIngredients"]);
+                $formDishPrice = $_POST["formDishPrice"];
+
+                $dishesModelInstance->addNewDish($formDishName,$formDishCategory,$formDishRecepie,$formDishIngredients,$formDishPrice);
+            }
     
             // //Update category
             // if (isset($_POST["inputCategoryUpdateName"])) {
