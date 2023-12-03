@@ -314,7 +314,7 @@
             return false;
         }
 
-        //Add new dishes ingredient
+        //Add new dish
         public function addNewDish($formDishName, $formDishCategory, $formDishRecepie, $formDishIngredients,$formDishPrice) {
             //Get last id 
             $sqlA = "SELECT MAX(dish_id) as max_id FROM `dishes`";
@@ -344,6 +344,23 @@
                 $stmt->execute();
                 $stmt->close();
             }
+        }
+
+        //Get all dishes 
+        public function getAllDishes() {
+            $sql = "SELECT * FROM `dishes`";
+            $stmt = $this->dishesModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $allIngredients = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+    
+                return $allIngredients;
+            }
+    
+            return false;
         }
     }
     

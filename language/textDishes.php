@@ -21,6 +21,7 @@
 
     //Dishes texts
     $textAddDishes = 'Add new dish';
+    $textDishList = 'Dish list';
     $textDishName = 'Dish name';
     $textDishCategory = 'Dish category';
     $textDishRecepie = 'Dish recepie:';

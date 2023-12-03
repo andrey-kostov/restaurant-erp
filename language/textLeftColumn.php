@@ -14,7 +14,8 @@
 
     //Dishes texts
     $textDasboardDishes = 'Dishes';
-    $textDasboardDishesList = 'Add Dish';
+    $textDasboardDishesAdd = 'Add Dish';
+    $textDasboardDishesList = 'Dish list';
     $textDasboardDishesCategories = 'Dishes categories';
     $textDasboardDishesRececpies = 'Recepies';
     $textDasboardDishesIngredients = 'Ingredients';

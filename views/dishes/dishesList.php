@@ -224,7 +224,7 @@
             ingredientInformation['ingredientQtyGrams'] = ingredientQtyGrams;
             ingredientInformation['ingredientPrice'] = ingredientPrice;
 
-            formDishIngredients.push(JSON.stringify(ingredientInformation));
+            formDishIngredients.push(ingredientInformation);
             
         });
 
@@ -236,7 +236,7 @@
                 formDishName: formDishName,
                 formDishCategory: formDishCategory,
                 formDishRecepie: formDishRecepie,
-                formDishIngredients: formDishIngredients,
+                formDishIngredients: JSON.stringify(formDishIngredients),
                 formDishPrice: formDishPrice
             },
             success: function() {

@@ -33,22 +33,7 @@
 
                 $dishesModelInstance->addNewDish($formDishName,$formDishCategory,$formDishRecepie,$formDishIngredients,$formDishPrice);
             }
-    
-            // //Update category
-            // if (isset($_POST["inputCategoryUpdateName"])) {
-            //     $inputUpdateCategoryId = $_POST["inputUpdateCategoryId"];
-            //     $inputCategoryUpdateName = $_POST["inputCategoryUpdateName"];
-            //     $dishesModelInstance->updateDrinkCategory($inputUpdateCategoryId,$inputCategoryUpdateName);
-                
-            // }
-            
-            // //Delete category
-            // if (isset($_POST['action']) && $_POST['action'] == 'deleteDrinkCategory') {
-            //     $drinkId = isset($_POST['drinkCategoryId']) ? $_POST['drinkCategoryId'] : null;
-                
-            //     $dishesModelInstance->deleteCategory( $drinkId);
-            // }
-            
+
             // //Display categories
             $dishesCategories = $dishesModelInstance->getdishesCategories();
             
