@@ -5,4 +5,9 @@
     $textActionSubmit = 'Add new';
     $textActionUpdate = 'Submit changes';
     $textCategoriesName = 'Category name';
+
+    //Settings
+    $textSettings = 'Settings';
+    $textTablesCount = 'Amount of tables';
+    $textSaveSettings = 'Save settings';
 ?>
