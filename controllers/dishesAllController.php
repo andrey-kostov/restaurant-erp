@@ -22,6 +22,12 @@
             $storeCurrency = $globalCurrency;
             $dishesModelInstance = new dishesModel;
 
+            //Delete dish
+            if (isset($_POST['action']) && $_POST['action'] == 'deleteDish') {
+                $dishId = isset($_POST['dishId']) ? $_POST['dishId'] : null;
+                $dishesModelInstance->deleteDish( $dishId);
+            }
+
             //Get all dishes
             $dishesResult = $dishesModelInstance->getAllDishes(); 
             $allDishes = [];

@@ -28,15 +28,37 @@
                     </td>
                     <td><?php echo $dish['dish_price']; ?></td>
                     <td>
-                        <a href="dishesCategories/edit?dishesCategoryId=<?php echo $dish['dish_id'] ?>" type="button" class="btn btn-sm btn-warning"><?php echo $textActionEditBtn; ?></a>
-                        <button data-dishesCategoryId="<?php echo $dish['dish_id'] ?>" type="button" class="btn btn-sm btn-danger"><?php echo $textActionDeleteBtn; ?></button>
+                        <!-- <a href="dishesCategories/edit?dishesCategoryId=<?php echo $dish['dish_id'] ?>" type="button" class="btn btn-sm btn-warning"><?php echo $textActionEditBtn; ?></a> -->
+                        <button data-dishId="<?php echo $dish['dish_id'] ?>" type="button" class="btn btn-sm btn-danger"><?php echo $textActionDeleteBtn; ?></button>
                     </td>
                 </tr>
             <?php }?>
         </tbody>
     </table>
 </div>
-
+<script>
+    $(document).ready(function() {
+        //Delete category
+        $(".btn-sm.btn-danger").click(function() {
+            let dishId = $(this).attr('data-dishId');
+            $.ajax({
+                type: "POST",
+                url: "dishesAll",
+                data: {
+                    action: "deleteDish",
+                    dishId: dishId
+                },
+                success: function() {
+                    window.location.reload();
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX Request Error:", status, error);
+                }
+            });
+        });
+        
+    });
+</script>
 
 
 

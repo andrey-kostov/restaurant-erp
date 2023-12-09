@@ -362,6 +362,17 @@
     
             return false;
         }
+
+        //Delete dish
+        public function deleteDish($dishId) {
+            $sql = "DELETE FROM dishes WHERE dish_id='" . $dishId . "'";
+            $stmt = $this->dishesModelInstance->prepare($sql);
+            if ($stmt) {
+                $stmt->execute();
+                $stmt->close();
+            }
+            $_POST = array();
+        }
     }
     
 ?>

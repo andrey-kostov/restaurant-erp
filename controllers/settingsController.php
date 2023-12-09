@@ -11,7 +11,13 @@ class settingsController extends Controller{
         $root = $globalRoot;
         $storeCurrency = $globalCurrency;
         $settingsModelInstance = new settingsModel;
-
+        
+        //Add new dishes category
+        if (isset($_POST['action']) && $_POST['action'] == 'updateSettings') {
+            $settingsArray = isset($_POST['settingsArray']) ? $_POST['settingsArray'] : null;
+            var_dump($settingsModelInstance->updateSettings($settingsArray));
+            
+        }
         require 'views/settings.php';
     }
 }
