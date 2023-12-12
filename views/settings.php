@@ -9,7 +9,21 @@
                     </div>
                     <div class="col-6">
                         <div class="input-group">
-                            <input type="number" class="form-control" placeholder="<?php echo $textTablesCount; ?>" id="inputTablesCount" name="inputTablesCount" required>
+                            <input 
+                                type="number" 
+                                class="form-control" 
+                                <?php 
+                                foreach ($allSettings as $setting => $value){
+                                    if($setting == 'inputTablesCount'){?>
+                                        placeholder="<?php echo $value['setting_value']; ?>" 
+                                        value="<?php echo $value['setting_value']; ?>"
+                                    <?php } else{ ?> 
+                                        placeholder="<?php echo $textTablesCount; ?>" 
+                                    <?php }} ?>
+                               
+                                id="inputTablesCount" 
+                                name="inputTablesCount" 
+                                required>
                         </div>
                     </div>
                 </div>

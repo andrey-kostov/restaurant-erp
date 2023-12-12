@@ -15,9 +15,11 @@ class settingsController extends Controller{
         //Add new dishes category
         if (isset($_POST['action']) && $_POST['action'] == 'updateSettings') {
             $settingsArray = isset($_POST['settingsArray']) ? $_POST['settingsArray'] : null;
-            var_dump($settingsModelInstance->updateSettings($settingsArray));
-            
         }
+
+        //Get All Settings
+        $allSettings = $settingsModelInstance->getAllSettings();
+        
         require 'views/settings.php';
     }
 }
