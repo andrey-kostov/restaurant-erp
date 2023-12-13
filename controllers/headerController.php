@@ -6,9 +6,15 @@ class headerController extends Controller{
     public function index(){
         require_once ('config.php');
         
+        
+        $root = $globalRoot;
+        $storeCurrency = $globalCurrency;
+        
+        
+        
+
         $headerLogo ='';
         $headerTitle='Restourant CMS';
-        $root = $globalRoot;
 
         require 'views/header.php';
     }

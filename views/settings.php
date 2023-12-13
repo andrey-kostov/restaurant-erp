@@ -28,6 +28,58 @@
                     </div>
                 </div>
                 <!-- Number of tables end -->
+                <!-- CMS Name start -->
+                <div class="row">
+                    <div class="col-3">
+                        <label for="inputCmsName"><?php echo $textCmsName; ?></label>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                <?php 
+                                foreach ($allSettings as $setting => $value){
+                                    if($setting == 'inputCmsName'){?>
+                                        placeholder="<?php echo $value['setting_value']; ?>" 
+                                        value="<?php echo $value['setting_value']; ?>"
+                                    <?php } else{ ?> 
+                                        placeholder="<?php echo $textCmsName; ?>" 
+                                    <?php }} ?>
+                               
+                                id="inputCmsName" 
+                                name="inputCmsName" 
+                                required>
+                        </div>
+                    </div>
+                </div>
+                <!-- CMS Name end -->
+                <!-- CMS Logo start -->
+                <div class="row">
+                    <div class="col-3">
+                        <label for="inputCmsLogo"><?php echo $textCmsName; ?></label>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                <?php 
+                                foreach ($allSettings as $setting => $value){
+                                    if($setting == 'inputCmsLogo'){?>
+                                        placeholder="<?php echo $value['setting_value']; ?>" 
+                                        value="<?php echo $value['setting_value']; ?>"
+                                    <?php } else{ ?> 
+                                        placeholder="<?php echo $textCmsLogo; ?>" 
+                                    <?php }} ?>
+                               
+                                id="inputCmsName" 
+                                name="inputCmsLogo" 
+                                required>
+                        </div>
+                    </div>
+                </div>
+                <!-- CMS Logo end -->
                 <hr>
                 <div class="row">
                     <div class="col-2">

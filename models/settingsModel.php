@@ -15,7 +15,6 @@
         public function updateSettings($settingsArray){
             $settings = json_decode($settingsArray,true);
             foreach($settings as $key=>$value){
-                
                 $sqlA = "SELECT setting_value FROM `settings` WHERE setting_key = ?";
                 $stmtA = $this->settingsModelInstance->prepare($sqlA);
                 if ($stmtA) {

@@ -12,9 +12,10 @@ class settingsController extends Controller{
         $storeCurrency = $globalCurrency;
         $settingsModelInstance = new settingsModel;
         
-        //Add new dishes category
+        //Update Categories
         if (isset($_POST['action']) && $_POST['action'] == 'updateSettings') {
             $settingsArray = isset($_POST['settingsArray']) ? $_POST['settingsArray'] : null;
+            $settingsModelInstance->updateSettings($settingsArray);
         }
 
         //Get All Settings

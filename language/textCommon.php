@@ -9,5 +9,7 @@
     //Settings
     $textSettings = 'Settings';
     $textTablesCount = 'Amount of tables';
+    $textCmsName = 'CMS Name';
+    $textCmsLogo = 'CMS Logo';
     $textSaveSettings = 'Save settings';
 ?>
