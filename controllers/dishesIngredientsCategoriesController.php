@@ -13,8 +13,8 @@
 
         public function index(){
         
-            require 'language/textDishes.php';
-            require 'language/textCommon.php';
+            require ('language/textDishes.php');
+            require ('language/textCommon.php');
             require('models/dishesModel.php');
             $dishesModelInstance = new dishesModel;
 
@@ -41,14 +41,14 @@
             //Display categories
             $dishesIngredientsCategories = $dishesModelInstance->getDishesIngredientsCategories();
     
-            require 'views/ingredients/dishesIngredientsCategories.php';
+            require ('views/ingredients/dishesIngredientsCategories.php');
         }
 
         public function edit(){
-            require 'models/dishesModel.php';
-            require 'language/textDishes.php';
-            require 'language/textCommon.php';
-            require 'config.php';
+            require ('models/dishesModel.php');
+            require ('language/textDishes.php');
+            require ('language/textCommon.php');
+            require ('config.php');
             
             $root = $globalRoot;
             $storeCurrency = $globalCurrency;
@@ -62,7 +62,7 @@
             $dishesModelInstance = new dishesModel;
             $categoryToEdit =  $dishesModelInstance->getSingleDishesIngredientsCategory($urlQuery[1]);
     
-            require 'views/ingredients/dishesIngredientsCategoriesEdit.php';
+            require ('views/ingredients/dishesIngredientsCategoriesEdit.php');
         }
     }
 

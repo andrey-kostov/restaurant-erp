@@ -23,7 +23,7 @@ class headerController extends Controller{
         
         $headerLogo ='';
 
-        require 'views/header.php';
+        require ('views/header.php');
     }
 }
 

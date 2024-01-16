@@ -12,10 +12,10 @@
         }
 
         public function index(){
-            require 'models/drinksModel.php';
-            require 'language/textDrinks.php';
-            require 'language/textCommon.php';
-            require 'config.php';
+            require ('models/drinksModel.php');
+            require ('language/textDrinks.php');
+            require ('language/textCommon.php');
+            require ('config.php');
             
             $storeCurrency = $globalCurrency;
 
@@ -70,14 +70,14 @@
 
             }
            
-            require 'views/drinks/drinksList.php';
+            require ('views/drinks/drinksList.php');
         }
 
         public function edit(){
-            require 'models/drinksModel.php';
-            require 'language/textDrinks.php';
-            require 'language/textCommon.php';
-            require 'config.php';
+            require ('models/drinksModel.php');
+            require ('language/textDrinks.php');
+            require ('language/textCommon.php');
+            require ('config.php');
             
             $root = $globalRoot;
             $storeCurrency = $globalCurrency;
@@ -92,7 +92,7 @@
             $drinkToEdit =  $drinksModelInstance->getSingleDrink($urlQuery[1]);
             $drinksCategories = $drinksModelInstance->getDrinksCategories();
 
-            require 'views/drinks/drinksEdit.php';
+            require ('views/drinks/drinksEdit.php');
         }
 
     }

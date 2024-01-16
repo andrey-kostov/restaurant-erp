@@ -6,8 +6,8 @@ class drinksCategoriesController extends Controller{
 
     public function index(){
         
-        require 'language/textDrinks.php';
-        require 'language/textCommon.php';
+        require( 'language/textDrinks.php');
+        require ('language/textCommon.php');
         require('models/drinksModel.php');
         $drinksModelInstance = new drinksModel;
 
@@ -35,14 +35,14 @@ class drinksCategoriesController extends Controller{
         //Display categories
         $drinksCategories = $drinksModelInstance->getDrinksCategories();
         
-        require 'views/drinks/drinksCategories.php';
+        require ('views/drinks/drinksCategories.php');
     }
 
     public function edit(){
-        require 'models/drinksModel.php';
-        require 'language/textDrinks.php';
-        require 'language/textCommon.php';
-        require 'config.php';
+        require ('models/drinksModel.php');
+        require ('language/textDrinks.php');
+        require ('language/textCommon.php');
+        require ('config.php');
         
         $root = $globalRoot;
         $storeCurrency = $globalCurrency;
@@ -56,7 +56,7 @@ class drinksCategoriesController extends Controller{
         $drinksModelInstance = new drinksModel;
         $categoryToEdit =  $drinksModelInstance->getSingleDrinkCategory($urlQuery[1]);
 
-        require 'views/drinks/drinksCategoriesEdit.php';
+        require ('views/drinks/drinksCategoriesEdit.php');
     }
 
 }

@@ -5,7 +5,7 @@
         <div class="col-md-2">
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo $root; ?>activeTables"> <?php echo $textDasboardDashboard;?></a>
+                    <a class="nav-link" href="<?php echo $root; ?>tables"> <?php echo $textDasboardDashboard;?></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo $root; ?>settings"> <?php echo $textDasboardSettings;?></a>

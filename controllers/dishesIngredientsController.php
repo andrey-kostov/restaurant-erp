@@ -13,9 +13,9 @@
 
         public function index(){
         
-            require 'language/textDishes.php';
-            require 'language/textCommon.php';
-            require 'config.php';
+            require ('language/textDishes.php');
+            require ('language/textCommon.php');
+            require ('config.php');
             require('models/dishesModel.php');
             $dishesModelInstance = new dishesModel;
 
@@ -68,14 +68,14 @@
                 $allIngredients[] = $item;
 
             }
-            require 'views/ingredients/dishesIngredients.php';
+            require ('views/ingredients/dishesIngredients.php');
         }
 
         public function edit(){
-            require 'models/dishesModel.php';
-            require 'language/textDishes.php';
-            require 'language/textCommon.php';
-            require 'config.php';
+            require ('models/dishesModel.php');
+            require ('language/textDishes.php');
+            require ('language/textCommon.php');
+            require ('config.php');
             
             $root = $globalRoot;
             $storeCurrency = $globalCurrency;
@@ -92,7 +92,7 @@
             //Get all ingredient categories for the select
             $ingredientsCategories = $dishesModelInstance->getDishesIngredientsCategories();
     
-            require 'views/ingredients/dishesIngredientsEdit.php';
+            require ('views/ingredients/dishesIngredientsEdit.php');
         }
     }
 

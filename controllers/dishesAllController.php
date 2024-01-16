@@ -13,10 +13,10 @@
 
         public function index(){
         
-            require 'language/textDishes.php';
-            require 'language/textCommon.php';
+            require ('language/textDishes.php');
+            require ('language/textCommon.php');
             require('models/dishesModel.php');
-            require 'config.php';
+            require ('config.php');
         
             $root = $globalRoot;
             $storeCurrency = $globalCurrency;
@@ -50,6 +50,6 @@
             }
 
 
-            require 'views/dishes/dishesAll.php';
+            require ('views/dishes/dishesAll.php');
         }
     }

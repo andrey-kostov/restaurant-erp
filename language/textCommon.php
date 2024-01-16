@@ -14,4 +14,9 @@
     $textCmsPrimaryColor = 'CMS Primary Color';
     $textCmsSecondaryColor = 'CMS Secondary Color';
     $textSaveSettings = 'Save settings';
+
+    //Tables
+    $textNewTable = 'New table';
+    $textAddTable = 'Add table';
+    $textTableCapacity = 'Table capacity';
 ?>

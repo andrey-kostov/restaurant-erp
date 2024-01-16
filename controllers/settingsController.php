@@ -4,9 +4,9 @@ require_once ('classes.php');
 class settingsController extends Controller{
     public function index(){
 
-        require 'language/textCommon.php';
+        require ('language/textCommon.php');
         require('models/settingsModel.php');
-        require 'config.php';
+        require ('config.php');
     
         $root = $globalRoot;
         $storeCurrency = $globalCurrency;
@@ -21,7 +21,7 @@ class settingsController extends Controller{
         //Get All Settings
         $allSettings = $settingsModelInstance->getAllSettings();
         
-        require 'views/settings.php';
+        require ('views/settings.php');
     }
 }
 ?>

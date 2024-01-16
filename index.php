@@ -29,11 +29,11 @@
         // Split the URL into controller and action
         $firstTrim = explode('?', $url); 
         $parts = explode('/', $firstTrim[0]);
-        $controller = isset($parts[0]) ? $parts[0] : 'activeTables'; // Default controller
+        $controller = isset($parts[0]) ? $parts[0] : 'tables'; // Default controller
         $action = isset($parts[1]) ? $parts[1] : 'index';    // Default action
 
         if($controller == ''){
-            $controller = 'activeTables';
+            $controller = 'tables';
         }
 
         
