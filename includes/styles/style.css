@@ -34,3 +34,36 @@ footer{
     min-height: 90vh;
 }
 
+#tablesList{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.resto-table{
+    border: 1px solid #dee2e6;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.resto-table .row{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.resto-table .form-switch{
+    display: flex;
+    padding: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.resto-table .form-check-input{
+    position: relative;
+    margin: 0;
+    top: 2px;
+}
+

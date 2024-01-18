@@ -19,4 +19,10 @@
     $textNewTable = 'New table';
     $textAddTable = 'Add table';
     $textTableCapacity = 'Table capacity';
+    $textCapacity = 'Capacity: ';
+    $textTableId = 'Table Id: ';
+    $textIsActive = 'Make it active: ';
+    $textActiveTables = 'Active Tables List:';
+    $textFreeTables = 'Available Tables List:';
+    $textOrderModal = 'See table order';
 ?>
