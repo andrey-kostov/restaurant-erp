@@ -24,5 +24,6 @@
     $textIsActive = 'Make it active: ';
     $textActiveTables = 'Active Tables List:';
     $textFreeTables = 'Available Tables List:';
-    $textOrderModal = 'See table order';
+    $textOrderModal = 'See table';
+    $textCloseTable = 'Close table';
 ?>

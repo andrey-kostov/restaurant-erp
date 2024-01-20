@@ -18,17 +18,32 @@ class tablesController extends Controller{
             $tablesModelInstance->addNewTable($newTableCapacity);
         }
 
-        //Update table
-        if (isset($_POST['action']) && $_POST['action'] == 'updateTable') {
+        //Open table
+        if (isset($_POST['action']) && $_POST['action'] == 'openTable') {
             $tableId = isset($_POST['tableId']) ? $_POST['tableId'] : null;
-            $tablesModelInstance->updateTable($tableId);
+            $tablesModelInstance->updateTable($tableId,1);
+        }
+
+        //Close table
+        if (isset($_POST['action']) && $_POST['action'] == 'closeTable') {
+            $tableId = isset($_POST['tableId']) ? $_POST['tableId'] : null;
+            $tablesModelInstance->updateTable($tableId,0);
         }
 
         //Get all tables
 
         $tablesList = $tablesModelInstance->getAllTables();
 
-        require ('views/tables.php');
+        require ('views/tables/tables.php');
+    }
+
+    public function ajaxTableModal(){
+
+        require ('language/textCommon.php');
+        
+        $tableId = isset($_POST['tableId']) ? $_POST['tableId'] : null;
+
+        require ('views/tables/tableModal.php');
     }
 }
 ?>

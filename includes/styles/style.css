@@ -1,3 +1,15 @@
+:root {
+    --black: #000000;
+    --white: #ffffff;
+
+    --mainColor: blue;
+
+    --lightBackground: #f8f9fa;
+    --mediumBorder:#c7c8c9;
+
+    --transitionDuration: 0.3s;
+  }
+
 #copyrights{
     text-align: center;
     margin-bottom: 0;
@@ -6,8 +18,39 @@
     letter-spacing: -1px;
 }
 
+#closeModal{
+    cursor: pointer;
+    color: #000000;
+    border: 2px solid;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding-bottom: 2px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+#closeModal:hover{
+    color: var(--mainColor);
+    transition-duration: var(--transitionDuration);
+}
+
+#closeTable{
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#closeTable:hover{
+    color: var(--mainColor);
+    transition-duration: var(--transitionDuration);
+}
+
 footer{ 
-    background: #f8f9fa;
+    background: var(--lightBackground);
 }
 
 #footer-links{
@@ -22,19 +65,58 @@ footer{
 
 #footer-links a svg{
     transform: scale(1.0);
-    transition-duration: 0.2s;
+    transition-duration: var(--transitionDuration);
 }
 
 #footer-links a:hover svg{
     transform: scale(1.3);
-    transition-duration: 0.2s;
+    transition-duration: var(--transitionDuration);
 }
 
 .main-body{
     min-height: 90vh;
 }
 
-#tablesList{
+#modalBtns{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--mediumBorder);
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+#modalWrapper.active{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: var(--white);
+    height: 85vh;
+    z-index: 9999;
+    width: 60vw;
+    border: 2px solid var(--mediumBorder);
+    border-radius: 5px;
+    box-shadow: 3px 3px 8px 0px var(--mediumBorder);
+}
+
+.table-modal{
+    padding: 5px 0 0;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition-duration: var(--transitionDuration);
+}
+
+.table-modal:hover{
+    font-size: 16px;
+    transition-duration: var(--transitionDuration);
+}
+
+#tablesList,
+#activeTables{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -43,9 +125,15 @@ footer{
 }
 
 .resto-table{
-    border: 1px solid #dee2e6;
+    display: flex;
+    border: 1px solid var(--mediumBorder);
     padding: 15px;
     border-radius: 5px;
+    width: 20%;
+    min-height: 110px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .resto-table .row{

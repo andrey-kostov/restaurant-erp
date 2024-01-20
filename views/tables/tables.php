@@ -12,7 +12,7 @@
                     <br>
                 </div>
                 <div class="row">
-                    <span href="#"><?php echo $textOrderModal;?></span>
+                    <span class="table-modal" id="tableModal-<?php echo $table['id'];?>" href="#"><?php echo $textOrderModal;?></span>
                 </div>
             </div>
         <?php } ?>
@@ -72,6 +72,8 @@
     </div>
 </div>
 
+<div id="modalWrapper"></div>
+
 <script>
     //Add table
     $("#newTable .btn-primary").click(function() {
@@ -98,12 +100,11 @@
             type: "POST",
             url: "tables",
             data: {
-                action: "updateTable",
+                action: "openTable",
                 tableId: $(this).attr('id')
             },
             success: function(response) {
-                console.log(response);
-                // setTimeout(window.location.reload(),1000);
+                setTimeout(window.location.reload(),1000);
             },
             error: function(xhr, status, error) {
                 console.error("AJAX Request Error:", status, error);
@@ -111,5 +112,50 @@
         });
     });
 
+    //Open table modal
+    $(".table-modal").click(function() {
+        $tableIdText = $(this).attr('id').split('-');
+        $tableId = $tableIdText[1];
+        
+        $.ajax({
+            type: "POST",
+            url: "tables/ajaxTableModal",
+            data: {
+                tableId: $tableId
+            },
+            success: function(response) {
+                $('#modalWrapper').addClass('active');
+                $('#modalWrapper').append(response);
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Request Error:", status, error);
+            }
+        });
+    });
+
+    //Close Table Modal
+    $(document).on('click','#closeModal',function(){
+        $('#modalWrapper').removeClass('active');
+        $('#modalWrapper').empty();
+    });
+
+    //Close Table Modal
+    $(document).on('click','#closeTable',function(){
+        $.ajax({
+            type: "POST",
+            url: "tables",
+            data: {
+                action: "closeTable",
+                tableId: $(this).attr('data-id')
+            },
+            success: function(response) {
+                setTimeout(window.location.reload(),1000);
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Request Error:", status, error);
+            }
+        });
+    });
+    
     
 </script>
