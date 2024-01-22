@@ -208,5 +208,22 @@
     
             return false;
         }
+
+        //Get all drinks by category
+        public function getAllDrinksByCategory($categoryId) {
+            $sql = "SELECT * FROM `drinks` WHERE `drink_category` = ".$categoryId;
+            $stmt = $this->drinksModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $drinksCategoriesList = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+    
+                return $drinksCategoriesList; // returns result
+            }
+    
+            return false;
+        }
     }
 ?>

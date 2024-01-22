@@ -39,11 +39,29 @@ class tablesController extends Controller{
 
     public function ajaxTableModal(){
 
-        require ('language/textCommon.php');
-        
+        require('language/textCommon.php');
+        require('models/drinksModel.php');
+        require('language/textDrinks.php');
+
+        //Get all drinks by categories
+
+        $drinksByCategory = [];
+
+        $drinksModelInstance = new drinksModel;
+        $drinksCategories = $drinksModelInstance->getDrinksCategories();
+
+        foreach ($drinksCategories as $category){
+            $drinkCategory = [];
+            $drinkCategory['category_name'] = $category['category_name'];
+            $drinkCategory['category_id'] = $category['category_id'];
+            $drinkCategory['drinks'] = $drinksModelInstance->getAllDrinksByCategory($category['category_id']);
+
+            array_push($drinksByCategory,$drinkCategory);
+        }
+
         $tableId = isset($_POST['tableId']) ? $_POST['tableId'] : null;
 
-        require ('views/tables/tableModal.php');
+        require('views/tables/tableModal.php');
     }
 }
 ?>

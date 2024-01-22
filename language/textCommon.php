@@ -26,4 +26,5 @@
     $textFreeTables = 'Available Tables List:';
     $textOrderModal = 'See table';
     $textCloseTable = 'Close table';
+    $textNoProducts = 'No products in this category!;'
 ?>
