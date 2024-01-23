@@ -40,10 +40,11 @@ class tablesController extends Controller{
     public function ajaxTableModal(){
 
         require('language/textCommon.php');
+        
+        //Get all drinks by category
+        
         require('models/drinksModel.php');
         require('language/textDrinks.php');
-
-        //Get all drinks by categories
 
         $drinksByCategory = [];
 
@@ -58,6 +59,25 @@ class tablesController extends Controller{
 
             array_push($drinksByCategory,$drinkCategory);
         }
+
+        //Get all dishes by category
+        
+        require('models/dishesModel.php');
+        require('language/textDishes.php');
+
+        $dishesByCategory = [];
+        $dishesModelInstance = new dishesModel;
+        $dishesCategories = $dishesModelInstance->getDishesCategories();
+
+        foreach ($dishesCategories as $category){
+            $dishCategory = [];
+            $dishCategory['category_name'] = $category['category_name'];
+            $dishCategory['category_id'] = $category['category_id'];
+            $dishCategory['dishes'] = $dishesModelInstance->getAllDishesByCategory($category['category_id']);
+
+            array_push($dishesByCategory,$dishCategory);
+        }
+
 
         $tableId = isset($_POST['tableId']) ? $_POST['tableId'] : null;
 

@@ -373,6 +373,23 @@
             }
             $_POST = array();
         }
+
+        //Get all dishes by category
+        public function getAllDishesByCategory($categoryId) {
+            $sql = "SELECT * FROM `dishes` WHERE `dish_category` = ".$categoryId;
+            $stmt = $this->dishesModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $dishesCategoriesList = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+    
+                return $dishesCategoriesList; // returns result
+            }
+    
+            return false;
+        }
     }
     
 ?>
