@@ -11,7 +11,7 @@
                         <div class="input-group">
                             <input 
                                 type="number" 
-                                class="form-control" 
+                                class="form-control setting" 
                                 <?php 
                                 foreach ($allSettings as $setting => $value){
                                     if($setting == 'inputTablesCount'){?>
@@ -28,6 +28,31 @@
                     </div>
                 </div>
                 <!-- Number of tables end -->
+                <hr>                            
+                <!-- Product status start -->
+
+                 <div class="row mb-3">
+                    <?php foreach($allStatuses as $status){ ?>
+                        <div class="row mb-3">
+                            <div class="col-3">
+                                <label for="inputCmsName"><?php echo $textStatusStage.' '.$status['id']; ?></label>
+                            </div>
+                            <div class="col-6">
+                            <div class="input-group">
+                                <input 
+                                    type="text" 
+                                    class="form-control status" 
+                                    value="<?php echo $status['name']; ?>"
+                                    id="product_status_<?php echo $status['id']; ?>" 
+                                    data-status-id="<?php echo $status['id']; ?>" 
+                                    required>
+                            </div>
+                        </div>
+                        </div>
+                    <?php } ?> 
+                 </div>
+
+                <!-- Product status end -->
                 <hr>
                 <!-- CMS Name start -->
                 <div class="row mb-3">
@@ -38,7 +63,7 @@
                         <div class="input-group">
                             <input 
                                 type="text" 
-                                class="form-control" 
+                                class="form-control setting" 
                                 <?php 
                                 foreach ($allSettings as $setting => $value){
                                     if($setting == 'inputCmsName'){?>
@@ -63,7 +88,7 @@
                     <div class="col-6">
                         <div class="input-group">
                             <input 
-                                class="form-control" 
+                                class="form-control setting" 
                                 type="file" 
                                 id="inputCmsLogo" 
                                 name="inputCmsLogo"
@@ -89,7 +114,7 @@
                     <div class="col-1">
                         <div class="input-group">
                             <input 
-                                class="form-control" 
+                                class="form-control setting" 
                                 type="color" 
                                 id="inputCmsPrimaryColor" 
                                 name="inputCmsPrimaryColor"
@@ -112,7 +137,7 @@
                     <div class="col-1">
                         <div class="input-group">
                             <input 
-                                class="form-control" 
+                                class="form-control setting" 
                                 type="color" 
                                 id="inputCmsSecondaryColor" 
                                 name="inputCmsSecondaryColor"
@@ -142,19 +167,29 @@
 <script>
     //Update settings
     $("form .btn-primary").click(function(event) {
-           event.preventDefault();
-           var settingsArray = {};
-           $.each($('.form-control'),function(){
+           
+        event.preventDefault();
+           
+        var settingsArray = {};
+        $.each($('.form-control.setting'),function(){
             var thisName = $(this).attr('name');
             var thisVal = $(this).val();
             settingsArray[thisName] = thisVal;
         });
-        console.log(settingsArray);
+         
+        var statusArray = {};
+        $.each($('.form-control.status'),function(){
+            var thisName = $(this).attr('data-status-id');
+            var thisVal = $(this).val();
+            statusArray[thisName] = thisVal;
+        });
+
         $.ajax({
             type: "POST",
             url: "settings",
             data: {
                 action: "updateSettings",
+                statusArray: JSON.stringify(statusArray),
                 settingsArray: JSON.stringify(settingsArray)
             },
             success: function(response) {

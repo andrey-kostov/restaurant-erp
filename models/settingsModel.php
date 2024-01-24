@@ -60,6 +60,19 @@
             }
         }
 
+        public function updateStatus($statusArray){
+            $statuses = json_decode($statusArray,true);
+            
+            foreach($statuses as $key=>$value){
+                $sql = "UPDATE `orders_product_status` SET `name` = '" . $value . "' WHERE `id` = '" . $key . "'";
+                $stmt = $this->settingsModelInstance->prepare($sql);
+                if ($stmt) {
+                    $stmt->execute();
+                    $stmt->close();
+                }
+            }
+        }
+
         public function getAllSettings(){
             $sql = "SELECT * FROM `settings`";
             $stmt = $this->settingsModelInstance->prepare($sql);
@@ -78,5 +91,21 @@
 
                 return $allSettings;
             }
+        }
+
+        public function getAllStatuses(){
+            $sql = "SELECT * FROM `orders_product_status`";
+            $stmt = $this->settingsModelInstance->prepare($sql);
+
+            if ($stmt) {
+            
+                $stmt->execute();
+                $result = $stmt->get_result(); 
+                $AllStatuses = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close();
+                
+                return $AllStatuses;
+            }           
+
         }
     }
