@@ -1,6 +1,6 @@
 Options -Indexes
 RewriteEngine On
-RewriteBase /projects/restaurant-cms/
+RewriteBase /ProjectsGitHub/restaurant-cms/
 
 # Redirect all requests to index.php
 RewriteCond %{REQUEST_FILENAME} !-f

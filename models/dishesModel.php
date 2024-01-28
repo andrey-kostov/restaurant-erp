@@ -390,6 +390,23 @@
     
             return false;
         }
+
+        //Get all ordered dishes by id and order_id
+        public function getOrderedDishes($orderId,$dish_id){
+            $sql = "SELECT * FROM `orders_dishes` WHERE `order_id` = ".$orderId." AND `dish_id` = ".$dish_id;
+            $stmt = $this->dishesModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $orderedDishes = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+    
+                return $orderedDishes; // returns result
+            }
+    
+            return false;
+        }
     }
     
 ?>

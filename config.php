@@ -1,5 +1,5 @@
 <?php
-$globalRoot = '/projects/restaurant-cms/';
+$globalRoot = '/ProjectsGitHub/restaurant-cms/';
 $globalCurrency = 'BGN';
 
 ?>

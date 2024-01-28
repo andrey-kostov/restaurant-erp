@@ -10,6 +10,7 @@
 
     <script src="<?php echo $root; ?>/includes/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo $root; ?>/includes/jquery/jquery-3.7.1.min.js"></script>
+    <script src="<?php echo $root; ?>/includes/js/custom.js"></script>
 
 </head>
 <body>

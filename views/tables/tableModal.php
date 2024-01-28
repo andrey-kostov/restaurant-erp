@@ -9,19 +9,21 @@
 
     <div class="row mb-6" id="tableInformation">
         <div class="container">
-            <span>
-                <?php echo $textTableId .$tableId; ?>
+            <span id="tableId">
+                <?php echo $textTableId;?>
+                <strong class="info-value">
+                    <?php echo $tableId; ?>
+                </strong>    
+            </span>
+            <span id="orderId">
+                <?php echo $textOrderId;?>
+                <strong class="info-value">
+                    <?php echo $orderInformation[0]; ?>
+                </strong>    
             </span>
         </div>    
     </div>
 
-    <hr>
-
-    <div class="row mb-6" id="tableOrderedProducts">
-        <div class="container">
-           Order Summary
-        </div>    
-    </div>
 
     <hr>
 
@@ -41,7 +43,7 @@
                                     <input type="number" 
                                             class="form-control"
                                             name="qty_drink_<?php echo $drink['drink_id'] ?>"
-                                            value=0
+                                            value=<?php echo $drink['quantity'] ?>
                                             min=0>
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-secondary qty-more" type="button">+</button>
@@ -73,11 +75,11 @@
                                     <input type="number" 
                                             class="form-control"
                                             name="qty_dish_<?php echo $dish['dish_id'] ?>"
-                                            value=0
+                                            value=<?php echo $dish['quantity'] ?>
                                             min=0>
                                     <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary qty-more" type="button">+</button>
-                                        <button class="btn btn-outline-secondary qty-less" type="button">-</button>
+                                        <button class="btn btn-outline-secondary qty-btn qty-more" type="button">+</button>
+                                        <button class="btn btn-outline-secondary qty-btn qty-less" type="button">-</button>
                                     </div>
                                 </div>
                             </div>                            
@@ -89,24 +91,3 @@
     </div>
 
 </div>
-
-<script>
-
-    $(document).on('click','.qty-more',function(){
-        var startingQtyMore = $(this).parent('.input-group-append').siblings('input').val();
-        startingQtyMore++;      
-        $(this).parent('.input-group-append').siblings('input').val(startingQtyMore);
-    });
-
-    $(document).on('click','.qty-less',function(){
-        var startingQtyLess = $(this).parent('.input-group-append').siblings('input').val();
-
-        if(startingQtyLess <= 0){
-            startingQtyLess = 0;
-        }else{
-            startingQtyLess--;
-        }
-        
-        $(this).parent('.input-group-append').siblings('input').val(startingQtyLess);
-    });
-</script>

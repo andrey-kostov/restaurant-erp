@@ -126,6 +126,7 @@
             success: function(response) {
                 $('#modalWrapper').addClass('active');
                 $('#modalWrapper').append(response);
+
             },
             error: function(xhr, status, error) {
                 console.error("AJAX Request Error:", status, error);
@@ -136,7 +137,7 @@
     //Close Table Modal
     $(document).on('click','#closeModal',function(){
         $('#modalWrapper').removeClass('active');
-        $('#modalWrapper').empty();
+        $('#modalWrapper>*').detach();
     });
 
     //Close Table Modal

@@ -22,6 +22,7 @@
     $textTableCapacity = 'Table capacity';
     $textCapacity = 'Capacity: ';
     $textTableId = 'Table Id: ';
+    $textOrderId = 'Order Id: ';
     $textIsActive = 'Make it active: ';
     $textActiveTables = 'Active Tables List:';
     $textFreeTables = 'Available Tables List:';

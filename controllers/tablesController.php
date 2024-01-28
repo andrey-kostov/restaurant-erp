@@ -46,6 +46,14 @@ class tablesController extends Controller{
         require('models/drinksModel.php');
         require('language/textDrinks.php');
 
+        $tableId = isset($_POST['tableId']) ? $_POST['tableId'] : null;
+        
+        //Get order id
+        require('models/tablesModel.php');
+        $tablesModelInstance = new tablesModel;
+        $orderInformation = $tablesModelInstance->getOrderInformation($tableId);
+        $orderId = $orderInformation[0];
+
         $drinksByCategory = [];
 
         $drinksModelInstance = new drinksModel;
@@ -56,6 +64,16 @@ class tablesController extends Controller{
             $drinkCategory['category_name'] = $category['category_name'];
             $drinkCategory['category_id'] = $category['category_id'];
             $drinkCategory['drinks'] = $drinksModelInstance->getAllDrinksByCategory($category['category_id']);
+
+            foreach($drinkCategory['drinks'] as &$singleProduct){
+                $orderedProducts = $drinksModelInstance->getOrderedDrinks($orderId,$singleProduct['drink_id']);
+                if(isset($orderedProducts[0]['qty'])){
+                    $singleProduct['quantity'] = $orderedProducts[0]['qty'];
+                }else{
+                    $singleProduct['quantity'] = 0;
+                }
+                
+            }
 
             array_push($drinksByCategory,$drinkCategory);
         }
@@ -75,13 +93,41 @@ class tablesController extends Controller{
             $dishCategory['category_id'] = $category['category_id'];
             $dishCategory['dishes'] = $dishesModelInstance->getAllDishesByCategory($category['category_id']);
 
+            foreach($dishCategory['dishes'] as &$singleProduct){
+                $orderedProducts = $dishesModelInstance->getOrderedDishes($orderId,$singleProduct['dish_id']);
+                if(isset($orderedProducts[0]['qty'])){
+                    $singleProduct['quantity'] = $orderedProducts[0]['qty'];
+                }else{
+                    $singleProduct['quantity'] = 0;
+                }
+                
+            }
+
             array_push($dishesByCategory,$dishCategory);
         }
 
-
-        $tableId = isset($_POST['tableId']) ? $_POST['tableId'] : null;
-
         require('views/tables/tableModal.php');
+    }
+
+    public function ajaxTableUpdate(){
+        $action = isset($_POST['action']) ? $_POST['action'] : null;
+        $quantity = isset($_POST['quantity']) ? $_POST['quantity'] : null;
+        $productType = isset($_POST['productType']) ? $_POST['productType'] : null;
+        $productId = isset($_POST['productId']) ? $_POST['productId'] : null;
+        $tableId = isset($_POST['tableId']) ? $_POST['tableId'] : null;
+        $orderId = isset($_POST['orderId']) ? $_POST['orderId'] : null;
+
+        require('models/tablesModel.php');
+        $tablesModelInstance = new tablesModel;
+
+        if($productType == "drink"){
+            $test = $tablesModelInstance->updateTableDrinks($tableId,$orderId,$productId,$quantity,$action);
+            
+        }else{
+            $tablesModelInstance->updateTableDishes($tableId,$orderId,$productId,$quantity,$action);
+        }
+
+        var_dump($test) ;
     }
 }
 ?>
