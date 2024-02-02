@@ -200,10 +200,10 @@
             if ($stmt) {
                 $stmt->execute(); 
                 $result = $stmt->get_result(); 
-                $drinksCategoriesList = $result->fetch_all(MYSQLI_ASSOC);
+                $drinksList = $result->fetch_all(MYSQLI_ASSOC);
                 $stmt->close(); 
     
-                return $drinksCategoriesList; // returns result
+                return $drinksList; // returns result
             }
     
             return false;

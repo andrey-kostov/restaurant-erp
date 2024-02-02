@@ -5,6 +5,9 @@
     $textDasboardSettings = 'Settings';
     $textDasboardCompletedTables = 'Completed tables';
     $textDasboardStatistics = 'Statistics';
+    $textDasboardStatisticsOrders = 'Total orders';
+    $textDasboardStatisticsDrinks = 'Ordered drinks';
+    $textDasboardStatisticsDishes = 'Ordered dishes';
 
     //Drinks texts
     $textDasboardDrinks = 'Drinks';

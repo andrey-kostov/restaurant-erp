@@ -54,12 +54,20 @@
                         </div>
                         </div>
                     </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo $root; ?>completedTables"><?php echo $textDasboardCompletedTables;?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo $root; ?>statistics"> <?php echo $textDasboardStatistics;?></a>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <?php echo $textDasboardStatistics;?>
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordion_wrapper">
+                        <div class="accordion-body">
+                            <a class="nav-link" href="<?php echo $root; ?>statistics/orders"><?php echo $textDasboardStatisticsOrders;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>statistics/drinks"><?php echo $textDasboardStatisticsDrinks;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>statistics/dishes"><?php echo $textDasboardStatisticsDishes;?></a>
+                        </div>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
