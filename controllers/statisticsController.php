@@ -28,7 +28,7 @@ class statisticsController extends Controller{
         $statisticsModelInstance = new statisticsModel;
     
         $allDrinks = $statisticsModelInstance ->getOrderedDrinks();
-        
+
         require ('views/statistics/drinks.php');
     }
 
@@ -36,14 +36,18 @@ class statisticsController extends Controller{
     public function dishes(){
 
         require ('language/textCommon.php');
+        require ('language/textStatistics.php');
         require ('config.php');
-    
+        
         $root = $globalRoot;
         $storeCurrency = $globalCurrency;
 
-        echo 'dishes';
-        
-        // require ('views/settings.php');
+        require('models/statisticsModel.php');
+        $statisticsModelInstance = new statisticsModel;
+    
+        $allDishes = $statisticsModelInstance ->getOrderedDishes();
+
+        require ('views/statistics/dishes.php');
     }
 }
 ?>

@@ -4,13 +4,13 @@
         <!-- Left Column -->
         <div class="col-md-2">
             <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo $root; ?>tables"> <?php echo $textDasboardDashboard;?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo $root; ?>settings"> <?php echo $textDasboardSettings;?></a>
-                </li>
                 <li class="accordion" id="accordion_wrapper">
+                    <div class="accordion-item">
+                        <a class="nav-link " href="<?php echo $root; ?>tables"> <?php echo $textDasboardDashboard;?></a>
+                    </div>
+                    <div class="accordion-item">
+                        <a class="nav-link " href="<?php echo $root; ?>settings"> <?php echo $textDasboardSettings;?></a>
+                    </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -67,6 +67,9 @@
                             <a class="nav-link" href="<?php echo $root; ?>statistics/dishes"><?php echo $textDasboardStatisticsDishes;?></a>
                         </div>
                         </div>
+                    </div>
+                    <div class="accordion-item">
+                        <a class="nav-link" href="<?php echo $root; ?>about"> <?php echo $textDasboardAbout;?></a>
                     </div>
                 </li>
             </ul>

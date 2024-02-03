@@ -242,5 +242,22 @@
     
             return false;
         }
+
+        //Get ordered drinks by drink id
+        public function getOrderedDrinksById($drink_id){
+            $sql = "SELECT * FROM `orders_drinks` WHERE `drink_id` = ".$drink_id;
+            $stmt = $this->drinksModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $orderedDrinks = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+    
+                return $orderedDrinks; // returns result
+            }
+    
+            return false;
+        }
     }
 ?>

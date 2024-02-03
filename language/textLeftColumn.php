@@ -8,6 +8,7 @@
     $textDasboardStatisticsOrders = 'Total orders';
     $textDasboardStatisticsDrinks = 'Ordered drinks';
     $textDasboardStatisticsDishes = 'Ordered dishes';
+    $textDasboardAbout = 'About the project';
 
     //Drinks texts
     $textDasboardDrinks = 'Drinks';

@@ -2,11 +2,11 @@
 <table class="table">
   <thead>
     <tr>
-        <th scope="col"><?php echo $textDrinkName;?></th>
-        <th scope="col"><?php echo $textDrinkQuantity;?></th>
-        <th scope="col"><?php echo $textDrinkHomePrice."(".$storeCurrency.")";?></th>
-        <th scope="col"><?php echo $textDrinkPrice."(".$storeCurrency.")";?></th>
-        <th scope="col"><?php echo $textDrinkProfit."(".$storeCurrency.")";?></th>
+        <th scope="col"><?php echo $textStatisticsDrink;?></th>
+        <th scope="col"><?php echo $textStatisticsQuantity;?></th>
+        <th scope="col"><?php echo $textStatisticsHomePrice."(".$storeCurrency.")";?></th>
+        <th scope="col"><?php echo $textStatisticsPrice."(".$storeCurrency.")";?></th>
+        <th scope="col"><?php echo $textStatisticsProfit."(".$storeCurrency.")";?></th>
     </tr>
   </thead>
   <tbody>

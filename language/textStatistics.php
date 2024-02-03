@@ -1,7 +1,8 @@
 <?php
-$textDrinkName = 'Drink name';
-$textDrinkQuantity = 'Ordered';
-$textDrinkHomePrice = 'Wholesale';
-$textDrinkPrice = 'Price';
-$textDrinkProfit = 'Total Profit';
+$textStatisticsDrink = 'Drink name';
+$textStatisticsDish = 'Dish name';
+$textStatisticsQuantity = 'Ordered';
+$textStatisticsHomePrice = 'Wholesale';
+$textStatisticsPrice = 'Price';
+$textStatisticsProfit = 'Total Profit';
 ?>

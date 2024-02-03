@@ -28,7 +28,11 @@
                 $orderedDrink['drink_home_price'] = $drink['drink_home_price'];
                 $orderedDrink['drink_price'] = $drink['drink_price'];
 
-                //@ToDo - get all ordered products in drink_quantity
+                $allOrderedDrink = $drinksModelInstance->getOrderedDrinksById($drink['drink_id']);
+                
+                foreach($allOrderedDrink as $ordered){
+                    $orderedDrink['drink_quantity'] = $orderedDrink['drink_quantity'] + $ordered['qty'];
+                } 
                 
                 $orderedDrink['drink_profit'] = ($orderedDrink['drink_price'] - $orderedDrink['drink_home_price']) * $orderedDrink['drink_quantity'];
                 
@@ -40,7 +44,31 @@
 
         
         public function getOrderedDishes(){
+            require ('models/dishesModel.php');
+            $dishesModelInstance = new dishesModel;
             
+            $orderedDishes = [];
+
+            //Get all dishes
+            $dishesList = $dishesModelInstance->getAllDishes();
+
+            //Get ordered dishes
+            foreach ($dishesList as &$dish){
+                $orderedDish = [];
+                $orderedDish['dish_name'] = $dish['dish_name'];
+                $orderedDish['dish_quantity'] = 0;
+                $orderedDish['dish_price'] = $dish['dish_price'];
+
+                $allOrderedDishes = $dishesModelInstance->getOrderedDishesById($dish['dish_id']);
+                
+                foreach($allOrderedDishes as $ordered){
+                    $orderedDish['dish_quantity'] = $orderedDish['dish_quantity'] + $ordered['qty'];
+                } 
+                
+                array_push($orderedDishes,$orderedDish);
+            }
+
+            return $orderedDishes;
         }
 
         

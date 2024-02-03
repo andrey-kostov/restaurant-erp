@@ -407,6 +407,23 @@
     
             return false;
         }
+
+        //Get ordered dishes by dish id
+        public function getOrderedDishesById($dish_id){
+            $sql = "SELECT * FROM `orders_dishes` WHERE `dish_id` = ".$dish_id;
+            $stmt = $this->dishesModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $orderedDishes = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+    
+                return $orderedDishes; // returns result
+            }
+    
+            return false;
+        }
     }
     
 ?>
