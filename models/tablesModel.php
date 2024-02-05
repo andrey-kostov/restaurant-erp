@@ -83,11 +83,12 @@
             $status = $active;
 
             if($active == 1){
-                $sqlOrder = "INSERT INTO `orders` (id, table_id , order_status) VALUES (?,?,?)";
+                $sqlOrder = "INSERT INTO `orders` (id, table_id , order_status, order_date) VALUES (?,?,?,?)";
                 $stmtOrder = $this->tablesModelInstance->prepare($sqlOrder);
+                $date = date("Y-m-d H:i:s");
                 if ($stmt) {
                     //Binds parameters, 's' for string, 'i' for integer, 'd' for float
-                    $stmtOrder->bind_param("iii",$lastId,$tableId,$status);
+                    $stmtOrder->bind_param("iiis",$lastId,$tableId,$status,$date);
                     $stmtOrder->execute();
                     $stmtOrder->close();
                 }

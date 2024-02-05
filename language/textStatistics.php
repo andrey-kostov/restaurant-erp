@@ -2,7 +2,7 @@
 $textStatisticsDrink = 'Drink name';
 $textStatisticsDish = 'Dish name';
 $textStatisticsQuantity = 'Ordered';
-$textStatisticsHomePrice = 'Wholesale';
+$textStatisticsHomePrice = 'Home price';
 $textStatisticsPrice = 'Price';
 $textStatisticsProfit = 'Total Profit';
 ?>

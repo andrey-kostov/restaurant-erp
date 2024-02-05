@@ -60,11 +60,19 @@
                 $orderedDish['dish_price'] = $dish['dish_price'];
 
                 $allOrderedDishes = $dishesModelInstance->getOrderedDishesById($dish['dish_id']);
-                
                 foreach($allOrderedDishes as $ordered){
                     $orderedDish['dish_quantity'] = $orderedDish['dish_quantity'] + $ordered['qty'];
                 } 
                 
+                $ingredients = json_decode(unserialize($dish['dish_ingredients']),true); 
+                $ingredientsPrice = 0;
+                foreach ($ingredients as $ingredient){
+                    $ingredientsPrice = $ingredient['ingredientPrice'] + $ingredientsPrice;
+                }
+
+                $orderedDish['dish_cost'] = $ingredientsPrice;
+                $orderedDish['dish_profit'] = $dish['dish_price'] - $ingredientsPrice;
+
                 array_push($orderedDishes,$orderedDish);
             }
 
