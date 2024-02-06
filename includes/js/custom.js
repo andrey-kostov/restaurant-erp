@@ -62,4 +62,34 @@ $(document).ready(function(){
             }
         });
     }
+
+    //Statistics All Orders
+    $(document).on('click','.btn.filter-button',function(){
+        if($(this).hasClass('today')){
+            getOrdersButtons('update','today');
+        }else if($(this).hasClass('day')){
+            getOrdersButtons('update','day');
+        }else if($(this).hasClass('week')){
+            getOrdersButtons('update','week');
+        }else if($(this).hasClass('month')){
+            getOrdersButtons('update','month');
+        }
+    });
+
+    function getOrdersButtons(action,period){
+        $.ajax({
+            type: "POST",
+            url: "ajaxOrdersButton",
+            data: {
+                action:action,
+                period:period
+            },
+            success: function(response) {
+               console.log(response);
+            },
+            error: function(xhr, status, error) {
+                console.error("AJAX Request Error:", status, error);
+            }
+        });
+    }
 });

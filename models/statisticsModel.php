@@ -80,7 +80,17 @@
         }
 
         
-        public function getTotalOrders(){
-            
+        public function getPeriodOrders($period){
+            // $sql = "SELECT * FROM `orders` WHERE `table_id` = $tableId AND `order_status` = 1";
+            // $stmt = $this->statisticsModelInstance->prepare($sql);
+    
+            // if ($stmt) {
+            //     $stmt->execute(); 
+            //     $result = $stmt->get_result(); 
+            //     $orderInformation = $result->fetch_row();
+            //     $stmt->close(); 
+    
+            //     return $orderInformation; 
+            // }
         }
     }

@@ -5,14 +5,14 @@ class statisticsController extends Controller{
     public function orders(){
 
         require ('language/textCommon.php');
+        require ('language/textStatistics.php');
         require ('config.php');
     
         $root = $globalRoot;
         $storeCurrency = $globalCurrency;
 
-        echo 'orders';
+        require ('views/statistics/orders.php');
         
-        // require ('views/settings.php');
     }
 
     public function drinks(){
@@ -48,6 +48,18 @@ class statisticsController extends Controller{
         $allDishes = $statisticsModelInstance ->getOrderedDishes();
 
         require ('views/statistics/dishes.php');
+    }
+
+    public function ajaxOrdersButton(){
+        $action = isset($_POST['action']) ? $_POST['action'] : null;
+        $period = isset($_POST['period']) ? $_POST['period'] : null;
+
+        require('models/statisticsModel.php');
+        $statisticsModelInstance = new statisticsModel;
+
+        $periodOrders = $statisticsModelInstance -> getPeriodOrders($period);
+
+        echo $period;
     }
 }
 ?>
