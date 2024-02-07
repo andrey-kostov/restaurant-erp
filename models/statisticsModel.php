@@ -81,16 +81,52 @@
 
         
         public function getPeriodOrders($period){
-            // $sql = "SELECT * FROM `orders` WHERE `table_id` = $tableId AND `order_status` = 1";
-            // $stmt = $this->statisticsModelInstance->prepare($sql);
+            
+            $sql = "SELECT * FROM `orders` WHERE `order_date` >= DATE_SUB(NOW(), INTERVAL ".$period." DAY)";
+            $stmt = $this->statisticsModelInstance->prepare($sql);
     
-            // if ($stmt) {
-            //     $stmt->execute(); 
-            //     $result = $stmt->get_result(); 
-            //     $orderInformation = $result->fetch_row();
-            //     $stmt->close(); 
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $orders = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
     
-            //     return $orderInformation; 
-            // }
+                return $orders; 
+            }
         }
+
+        //Get ordered drinks by order id
+        public function getOrderedDrinksByOrderId($order_id){
+            $sql = "SELECT * FROM `orders_drinks` WHERE `order_id` = ".$order_id;
+            $stmt = $this->statisticsModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $orderedDrinks = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+    
+                return $orderedDrinks; // returns result
+            }
+    
+            return false;
+        }
+
+        //Get ordered dishes by order id
+        public function getOrderedDishesByOrderId($orderId){
+            $sql = "SELECT * FROM `orders_dishes` WHERE `order_id` = ".$orderId;
+            $stmt = $this->statisticsModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $orderedDishes = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+    
+                return $orderedDishes; // returns result
+            }
+    
+            return false;
+        }
+
     }

@@ -13,4 +13,13 @@ $textStatisticsMonth = 'Last month';
 
 $textStatisticsFromD = 'From date';
 $textStatisticsToD = 'To date';
+
+$textStatisticsOrdersPeriod = 'Orders for the selected time period:';
+$textStatisticsOrderId = 'Order ID';
+$textStatisticsTableId = 'Table ID';
+$textStatisticsOrderDate = 'Order date';
+$textStatisticsOrderedDishes = 'Ordered dishes';
+$textStatisticsOrderedDrinks = 'Ordered drinks';
+$textStatisticsOrderSum = 'Total';
+$textStatisticsOrderProfit = 'Profit';
 ?>

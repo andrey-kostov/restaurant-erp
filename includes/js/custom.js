@@ -66,13 +66,13 @@ $(document).ready(function(){
     //Statistics All Orders
     $(document).on('click','.btn.filter-button',function(){
         if($(this).hasClass('today')){
-            getOrdersButtons('update','today');
+            getOrdersButtons('update',1);
         }else if($(this).hasClass('day')){
-            getOrdersButtons('update','day');
+            getOrdersButtons('update',2);
         }else if($(this).hasClass('week')){
-            getOrdersButtons('update','week');
+            getOrdersButtons('update',7);
         }else if($(this).hasClass('month')){
-            getOrdersButtons('update','month');
+            getOrdersButtons('update',30);
         }
     });
 
@@ -85,7 +85,22 @@ $(document).ready(function(){
                 period:period
             },
             success: function(response) {
-               console.log(response);
+                var jsonResponse = JSON.parse(response);
+                $('.container.order-results tbody').empty();
+                $.each(jsonResponse,function(){
+                    console.log(this);
+                    var tableRow = "<tr>";
+                            tableRow += "<td>"+this.order_id+"</td>";
+                            tableRow += "<td>"+this.order_table+"</td>";
+                            tableRow += "<td>"+this.order_date+"</td>";
+                            tableRow += "<td>4</td>";
+                            tableRow += "<td>5</td>";
+                            tableRow += "<td>6</td>";
+                            tableRow += "<td>7</td>";
+                        tableRow += "</tr>";
+                    $('.container.order-results tbody').append(tableRow);
+                });
+               
             },
             error: function(xhr, status, error) {
                 console.error("AJAX Request Error:", status, error);

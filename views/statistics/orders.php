@@ -33,7 +33,27 @@
 <hr>
 
 <div class="row">
-    <div class="container results"></div>
+    <div class="container">
+        <h2 class="card-title"><?php echo $textStatisticsOrdersPeriod; ?></h2>
+    </div>
+    <div class="container order-results">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"><?php echo $textStatisticsOrderId;?></th>
+                <th scope="col"><?php echo $textStatisticsTableId;?></th>
+                <th scope="col"><?php echo $textStatisticsOrderDate;?></th>
+                <th scope="col"><?php echo $textStatisticsOrderedDishes;?></th>
+                <th scope="col"><?php echo $textStatisticsOrderedDrinks;?></th>
+                <th scope="col"><?php echo $textStatisticsOrderSum."(".$storeCurrency.")";?></th>
+                <th scope="col"><?php echo $textStatisticsOrderProfit."(".$storeCurrency.")";?></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+        </table>
+    </div>
 </div>
 
 

@@ -127,7 +127,6 @@ class tablesController extends Controller{
             $tablesModelInstance->updateTableDishes($tableId,$orderId,$productId,$quantity,$action);
         }
 
-        var_dump($test) ;
     }
 }
 ?>
