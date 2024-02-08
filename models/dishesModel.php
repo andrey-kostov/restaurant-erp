@@ -391,6 +391,23 @@
             return false;
         }
 
+        //Get dish by dish_id
+        public function getSingleDish($dishId) {
+            $sql = "SELECT * FROM `dishes` WHERE `dish_id` = ".$dishId;
+            $stmt = $this->dishesModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $singleDish = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+    
+                return $singleDish; // returns result
+            }
+    
+            return false;
+        }
+
         //Get all ordered dishes by id and order_id
         public function getOrderedDishes($orderId,$dish_id){
             $sql = "SELECT * FROM `orders_dishes` WHERE `order_id` = ".$orderId." AND `dish_id` = ".$dish_id;

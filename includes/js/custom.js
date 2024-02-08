@@ -88,15 +88,31 @@ $(document).ready(function(){
                 var jsonResponse = JSON.parse(response);
                 $('.container.order-results tbody').empty();
                 $.each(jsonResponse,function(){
-                    console.log(this);
+                    
                     var tableRow = "<tr>";
                             tableRow += "<td>"+this.order_id+"</td>";
                             tableRow += "<td>"+this.order_table+"</td>";
                             tableRow += "<td>"+this.order_date+"</td>";
-                            tableRow += "<td>4</td>";
-                            tableRow += "<td>5</td>";
-                            tableRow += "<td>6</td>";
-                            tableRow += "<td>7</td>";
+                            tableRow += "<td>";
+                                if((this.ordered_dishes).length > 0){
+                                    $.each(this.ordered_dishes,function(){
+                                        tableRow += this.qty+" x <strong>"+this.dish_name+"</strong> <small>("+(this.dish_price).toFixed(2)+")</small> = "+(this.dish_total_price).toFixed(2)+"<br>";
+                                    });
+                                }else{
+                                    tableRow += "---";
+                                }
+                            tableRow += "</td>";
+                            tableRow += "<td>";
+                                if((this.ordered_drinks).length > 0){
+                                    $.each(this.ordered_drinks,function(){
+                                        tableRow += this.qty+" x <strong>"+this.drink_name+"</strong> <small>("+(this.drink_price).toFixed(2)+")</small> = "+(this.drink_total_price).toFixed(2)+"<br>";
+                                    });
+                                }else{
+                                    tableRow += "---";
+                                }
+                            tableRow += "</td>";
+                            tableRow += "<td>"+(this.order_total).toFixed(2)+"</td>";
+                            tableRow += "<td>"+(this.order_total_profit).toFixed(2)+"</td>";
                         tableRow += "</tr>";
                     $('.container.order-results tbody').append(tableRow);
                 });

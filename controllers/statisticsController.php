@@ -69,34 +69,65 @@ class statisticsController extends Controller{
         foreach ($periodOrders as &$order){
             $orderInformation['order_id'] = $order['id'];
             $orderInformation['order_table'] = $order['table_id'];
-            $orderInformation['order_date'] = $order['order_date'];
+            $orderInformation['order_date'] = date("d.m.Y", strtotime($order['order_date']));
 
-            $ordered_dishes = $statisticsModelInstance->getOrderedDishesByOrderId($order['id']);
-            $ordered_drinks = $statisticsModelInstance->getOrderedDrinksByOrderId($order['id']);
+            $orderedDishes = $statisticsModelInstance->getOrderedDishesByOrderId($order['id']);
+            $orderedDrinks = $statisticsModelInstance->getOrderedDrinksByOrderId($order['id']);
 
-            foreach($ordered_drinks as $drink){
+            $orderedDishesInformation = [];           
+            $orderedDrinksInformation = []; 
+            
+            $orderTotal = 0;
+            $orderTotal_profit = 0;
+
+            foreach($orderedDrinks as $drink){
                 
-                $drink_information = [];
+                $drinkInformation = [];
                 $information = $drinksModelInstance->getSingleDrink($drink['drink_id']);
                 
-                $drink_information['qty'] = $drink['qty'];
-                $drink_information['drink_name'] = $information[0]['drink_name'];
-                $drink_information['drink_home_price'] = $information[0]['drink_home_price'];
-                $drink_information['drink_price'] = $information[0]['drink_price'];
-                $drink_information['drink_profit'] = $information[0]['drink_price'] - $information[0]['drink_home_price']; 
-                $drink_information['drink_total_price'] = $drink['qty'] * $drink_information['drink_price'];
-                $drink_information['drink_total_profit'] = $drink['qty'] * $drink_information['drink_profit'];
-                
-                var_dump($drink_information);
+                $drinkInformation['qty'] = $drink['qty'];
+                $drinkInformation['drink_name'] = $information[0]['drink_name'];
+                $drinkInformation['drink_home_price'] = $information[0]['drink_home_price'];
+                $drinkInformation['drink_price'] = (float)$information[0]['drink_price'];
+                $drinkInformation['drink_profit'] = $information[0]['drink_price'] - $information[0]['drink_home_price']; 
+                $drinkInformation['drink_total_price'] = $drink['qty'] * $drinkInformation['drink_price'];
+                $drinkInformation['drink_total_profit'] = $drink['qty'] * $drinkInformation['drink_profit'];
 
-                array_push($ordered_drinks_information,$drink_information);
+                $orderTotal = $orderTotal + $drinkInformation['drink_total_price'];
+                $orderTotal_profit = $orderTotal_profit + $drinkInformation['drink_total_profit'];
+                
+                array_push($orderedDrinksInformation,$drinkInformation);
             }
 
-            $ordered_dishes_information = [];           
-            $ordered_drinks_information = [];       
+            foreach($orderedDishes as $dish){
+                
+                $dishInformation = [];
+                $information = $dishesModelInstance->getSingleDish($dish['dish_id']);
 
-            $orderInformation['ordered_dishes'] = $ordered_dishes_information;
-            $orderInformation['ordered_drinks'] = $ordered_drinks_information;
+                $ingredients = json_decode(unserialize($information[0]['dish_ingredients']),true); 
+                $ingredientsPrice = 0;
+                foreach ($ingredients as $ingredient){
+                    $ingredientsPrice = $ingredient['ingredientPrice'] + $ingredientsPrice;
+                }
+
+                $dishInformation['qty'] = $dish['qty'];
+                $dishInformation['dish_name'] = $information[0]['dish_name'];
+                $dishInformation['dish_home_price'] = $ingredientsPrice;
+                $dishInformation['dish_price'] = (float)$information[0]['dish_price'];
+                $dishInformation['dish_profit'] = $information[0]['dish_price'] - $ingredientsPrice; 
+                $dishInformation['dish_total_price'] = $dish['qty'] * $dishInformation['dish_price'];
+                $dishInformation['dish_total_profit'] = $dish['qty'] * $dishInformation['dish_profit'];
+
+                $orderTotal = $orderTotal + $dishInformation['dish_total_price'];
+                $orderTotal_profit = $orderTotal_profit + $dishInformation['dish_total_profit'];
+                
+                array_push($orderedDishesInformation,$dishInformation);
+            }
+
+            $orderInformation['ordered_dishes'] = $orderedDishesInformation;
+            $orderInformation['ordered_drinks'] = $orderedDrinksInformation;
+            $orderInformation['order_total'] = $orderTotal;
+            $orderInformation['order_total_profit'] = $orderTotal_profit; 
 
             array_push($periodOrdersInformation,$orderInformation);
         }
