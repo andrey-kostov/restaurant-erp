@@ -28,7 +28,7 @@
     //User texts
     $textDasboardUsers = 'Users';
     $textDasboardUserList = 'User list';
-    $textDasboardUserType = 'User type';
+    $textDasboardUserGroups = 'User groups';
     $textDasboardUserAdd = 'Add user';
 
 ?>

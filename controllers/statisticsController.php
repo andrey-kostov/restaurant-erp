@@ -50,8 +50,8 @@ class statisticsController extends Controller{
         require ('views/statistics/dishes.php');
     }
 
-    public function ajaxOrdersButton(){
-        $action = isset($_POST['action']) ? $_POST['action'] : null;
+    public function ajaxOrdersTotal(){
+        $type = isset($_POST['type']) ? $_POST['type'] : null;
         $period = isset($_POST['period']) ? $_POST['period'] : null;
 
         require('models/statisticsModel.php');
@@ -62,7 +62,12 @@ class statisticsController extends Controller{
         $drinksModelInstance = new drinksModel;
         $dishesModelInstance = new dishesModel;
 
-        $periodOrders = $statisticsModelInstance -> getPeriodOrders($period);
+        if($type === 'dynamic'){
+            $periodOrders = $statisticsModelInstance -> getDynamicPeriodOrders($period);
+        }else{
+            $periodOrders = $statisticsModelInstance -> getFixedPeriodOrders($period);
+        }
+
 
         $periodOrdersInformation = [];
 

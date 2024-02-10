@@ -13,6 +13,7 @@ $textStatisticsMonth = 'Last month';
 
 $textStatisticsFromD = 'From date';
 $textStatisticsToD = 'To date';
+$textFilter = 'Filter';
 
 $textStatisticsOrdersPeriod = 'Orders for the selected time period:';
 $textStatisticsOrderId = 'Order ID';

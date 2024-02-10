@@ -80,9 +80,24 @@
         }
 
         
-        public function getPeriodOrders($period){
+        public function getFixedPeriodOrders($period){
             
             $sql = "SELECT * FROM `orders` WHERE `order_date` >= DATE_SUB(NOW(), INTERVAL ".$period." DAY)";
+            $stmt = $this->statisticsModelInstance->prepare($sql);
+    
+            if ($stmt) {
+                $stmt->execute(); 
+                $result = $stmt->get_result(); 
+                $orders = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close(); 
+    
+                return $orders; 
+            }
+        }
+
+        public function getDynamicPeriodOrders($period){
+            $periodArray = explode('/',$period);
+            $sql = "SELECT * FROM `orders` WHERE `order_date` >= '$periodArray[0]' AND order_date <= '$periodArray[1]'";
             $stmt = $this->statisticsModelInstance->prepare($sql);
     
             if ($stmt) {

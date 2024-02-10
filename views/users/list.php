@@ -1,0 +1,1 @@
+<h2 class="card-title"> <?php echo $textUserList; ?> </h2>

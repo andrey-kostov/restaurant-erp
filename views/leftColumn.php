@@ -48,9 +48,8 @@
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordion_wrapper">
                         <div class="accordion-body">
-                            <a class="nav-link" href="<?php echo $root; ?>userList"><?php echo $textDasboardUserList;?></a>
-                            <a class="nav-link" href="<?php echo $root; ?>userType"><?php echo $textDasboardUserType;?></a>
-                            <a class="nav-link" href="<?php echo $root; ?>userAdd"><?php echo $textDasboardUserAdd;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>users/userAdd"><?php echo $textDasboardUserAdd;?></a>
+                            <a class="nav-link" href="<?php echo $root; ?>users/userList"><?php echo $textDasboardUserList;?></a>
                         </div>
                         </div>
                     </div>

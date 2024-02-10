@@ -66,26 +66,37 @@ $(document).ready(function(){
     //Statistics All Orders
     $(document).on('click','.btn.filter-button',function(){
         if($(this).hasClass('today')){
-            getOrdersButtons('update',1);
+            getOrdersButtons('fixed',1);
         }else if($(this).hasClass('day')){
-            getOrdersButtons('update',2);
+            getOrdersButtons('fixed',2);
         }else if($(this).hasClass('week')){
-            getOrdersButtons('update',7);
+            getOrdersButtons('fixed',7);
         }else if($(this).hasClass('month')){
-            getOrdersButtons('update',30);
+            getOrdersButtons('fixed',30);
+        }else{
+            if($('#fromDate').val() == '' || $('#toDate').val() == ''){
+                alert('Please, select date range!');
+            }else{
+                var orderPeriod = $('#fromDate').val()+'/'+$('#toDate').val();
+                getOrdersButtons('dynamic',orderPeriod);
+            }
         }
     });
 
-    function getOrdersButtons(action,period){
+    function getOrdersButtons(type,period){
         $.ajax({
             type: "POST",
-            url: "ajaxOrdersButton",
+            url: "ajaxOrdersTotal",
             data: {
-                action:action,
+                type:type,
                 period:period
             },
             success: function(response) {
                 var jsonResponse = JSON.parse(response);
+
+                if(jsonResponse.length === 0){
+                    alert("No orders in the time frame!");}
+  
                 $('.container.order-results tbody').empty();
                 $.each(jsonResponse,function(){
                     
@@ -123,4 +134,6 @@ $(document).ready(function(){
             }
         });
     }
+
+    
 });

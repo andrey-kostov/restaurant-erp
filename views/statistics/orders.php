@@ -27,6 +27,9 @@
             <label for="toDate"><?php echo $textStatisticsToD;?></label>
             <input id="toDate" type="date">
         </div>
+        <button class="btn btn-outline-primary filter-button" id="filterByDate">
+            <?php echo $textFilter; ?>
+        </button>
     </div>
 </div>
 
