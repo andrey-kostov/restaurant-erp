@@ -44,4 +44,14 @@ class Model {
     }
 }
 
+class UserAuth{
+    function index(){
+        $isAdmin = false;
+        if(isset($_SESSION['isAdmin'])){
+            $isAdmin = true;
+        }
+        return $isAdmin;
+    }
+}
+
 ?>

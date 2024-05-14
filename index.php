@@ -1,4 +1,6 @@
 <?php 
+    //Session start
+    session_start();
     // Get the requested URL
     $url = isset($_GET['url']) ? $_GET['url'] : '';
     //Check if is ajax function
@@ -9,6 +11,8 @@
     } else{
         $isAjax = false;
     }
+    
+
 
     if($isAjax === false){
         //Header include

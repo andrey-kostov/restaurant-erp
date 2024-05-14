@@ -1,16 +1,16 @@
 <div class="container-fluid">
     <div class="row">
-        <h2 class="card-title"> <?php echo $textEditDrinkTitle; ?> </h2>
-        <form id="drinkUpdateForm" action="<?php echo $root;?>drinksList" method="post" enctype="multipart/form-data" class="row g-1">
+        <h2 class="card-title"> <?= $textEditDrinkTitle; ?> </h2>
+        <form id="drinkUpdateForm" action="<?= $root;?>drinksList" method="post" enctype="multipart/form-data" class="row g-1">
             <div class="col-1 d-none">
                 <div class="input-group">
                     <input 
                         type="text" 
-                        placeholder="<?php echo $textDrinkId; ?>" 
+                        placeholder="<?= $textDrinkId; ?>" 
                         class="form-control" 
                         id="inputUpdateDrinkId" 
                         name="inputUpdateDrinkId" 
-                        value="<?php echo $drinkToEdit[0]['drink_id']?>"
+                        value="<?= $drinkToEdit[0]['drink_id']?>"
                         required>
                 </div>
             </div>
@@ -18,11 +18,11 @@
                 <div class="input-group">
                     <input 
                         type="text" 
-                        placeholder="<?php echo $textDrinkName; ?>" 
+                        placeholder="<?= $textDrinkName; ?>" 
                         class="form-control" 
                         id="inputUpdateDrinkName" 
                         name="inputUpdateDrinkName" 
-                        value="<?php echo $drinkToEdit[0]['drink_name']?>"
+                        value="<?= $drinkToEdit[0]['drink_name']?>"
                         required>
                 </div>
             </div>
@@ -31,9 +31,9 @@
                     <?php if(isset($drinksCategories)){ ?>
                         <?php foreach ($drinksCategories as $category){ 
                             if($drinkToEdit[0]['drink_category'] == $category['category_id']){ ?>
-                                <option selected value="<?php echo $category['category_id'] ?>"><?php echo $category['category_name'] ?></option>
+                                <option selected value="<?= $category['category_id'] ?>"><?= $category['category_name'] ?></option>
                             <?php } else { ?>
-                                <option value="<?php echo $category['category_id'] ?>"><?php echo $category['category_name'] ?></option>
+                                <option value="<?= $category['category_id'] ?>"><?= $category['category_name'] ?></option>
                             <?php } ?>
                               
                         <?php } ?>   
@@ -42,36 +42,36 @@
             </div>
             <div class="col-2">
                 <div class="input-group">
-                    <span class="input-group-text" id="basic-addon1"><?php echo $storeCurrency; ?></span>
+                    <span class="input-group-text" id="basic-addon1"><?= $storeCurrency; ?></span>
                     <input 
                         type="number" 
-                        placeholder="<?php echo $textDrinkHousePrice; ?>" 
+                        placeholder="<?= $textDrinkHousePrice; ?>" 
                         class="form-control" 
                         step="0.01"
                         id="inputUpdateDrinkHousePrice" 
                         name="inputUpdateDrinkHousePrice" 
                         aria-describedby="basic-addon1" 
-                        value="<?php echo $drinkToEdit[0]['drink_home_price']?>"
+                        value="<?= $drinkToEdit[0]['drink_home_price']?>"
                         required>
                 </div>
             </div>
             <div class="col-2">
                 <div class="input-group">
-                    <span class="input-group-text" id="basic-addon2"><?php echo $storeCurrency; ?></span>
+                    <span class="input-group-text" id="basic-addon2"><?= $storeCurrency; ?></span>
                     <input 
                         type="number" 
-                        placeholder="<?php echo $textDrinkClientPrice; ?>" 
+                        placeholder="<?= $textDrinkClientPrice; ?>" 
                         class="form-control" 
                         step="0.01"
                         id="inputUpdateDrinkClientPrice" 
                         name="inputUpdateDrinkClientPrice" 
                         aria-describedby="basic-addon2" 
-                        value="<?php echo $drinkToEdit[0]['drink_price']?>"
+                        value="<?= $drinkToEdit[0]['drink_price']?>"
                         required>
                 </div>
             </div>
             <div class="col-2">
-                <button class="btn btn-primary" type="submit"><?php echo $textActionUpdate; ?></button>
+                <button class="btn btn-primary" type="submit"><?= $textActionUpdate; ?></button>
             </div>
         </form>
     </div>

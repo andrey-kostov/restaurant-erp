@@ -1,14 +1,14 @@
 <div class="container-fluid">
     <div class="row">
-        <h2 class="card-title"> <?php echo $textDishesIngredientsAddCategory; ?> </h2>
+        <h2 class="card-title"> <?= $textDishesIngredientsAddCategory; ?> </h2>
         <form id="dishesIngredientsCategoriesForm" action="dishesIngredientsCategories" method="post" enctype="multipart/form-data" class="row g-1">
             <div class="col-10">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="<?php echo $textDishesCategoriesName; ?>" id="inputDishesIngredientsCategoryName" name="inputDishesIngredientsCategoryName" required>
+                    <input type="text" class="form-control" placeholder="<?= $textDishesCategoriesName; ?>" id="inputDishesIngredientsCategoryName" name="inputDishesIngredientsCategoryName" required>
                 </div>
             </div>
             <div class="col-2">
-                <button class="btn btn-primary"><?php echo $textActionSubmit; ?></button>
+                <button class="btn btn-primary"><?= $textActionSubmit; ?></button>
             </div>
         </form>
     </div>
@@ -16,27 +16,27 @@
     <hr>
 
     <div class="row">
-        <h2 class="card-title"> <?php echo $textDishesIngredientsCategoriesTitle; ?> </h2>
+        <h2 class="card-title"> <?= $textDishesIngredientsCategoriesTitle; ?> </h2>
         <div class="container-fluid">
             <div class="row">
                 <table class="table table-sm">
                     <thead>
                         <tr>
-                            <th scope="col"><?php echo $textDishesCategoriesNumber; ?></th>
-                            <th scope="col"><?php echo $textDishesCategoriesName; ?></th>
-                            <th scope="col"><?php echo $textDishesCategoriesId; ?></th>
-                            <th scope="col"><?php echo $textDishesCategoriesActions; ?></th>
+                            <th scope="col"><?= $textDishesCategoriesNumber; ?></th>
+                            <th scope="col"><?= $textDishesCategoriesName; ?></th>
+                            <th scope="col"><?= $textDishesCategoriesId; ?></th>
+                            <th scope="col"><?= $textDishesCategoriesActions; ?></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php if(isset($dishesIngredientsCategories)){foreach ($dishesIngredientsCategories as $category) { ?>
                             <tr>
-                                <th scope="row"><?php echo $category['id'] ?></th>
-                                <td><?php echo $category['category_name'] ?></td>
-                                <td><?php echo $category['category_id'] ?></td>
+                                <th scope="row"><?= $category['id'] ?></th>
+                                <td><?= $category['category_name'] ?></td>
+                                <td><?= $category['category_id'] ?></td>
                                 <td>
-                                    <a href="dishesIngredientsCategories/edit?dishesIngredientsCategoryId=<?php echo $category['category_id'] ?>" type="button" class="btn btn-sm btn-warning"><?php echo $textActionEditBtn; ?></a>
-                                    <button data-dishesIngredientsCategoryId="<?php echo $category['category_id'] ?>" type="button" class="btn btn-sm btn-danger"><?php echo $textActionDeleteBtn; ?></button>
+                                    <a href="dishesIngredientsCategories/edit?dishesIngredientsCategoryId=<?= $category['category_id'] ?>" type="button" class="btn btn-sm btn-warning"><?= $textActionEditBtn; ?></a>
+                                    <button data-dishesIngredientsCategoryId="<?= $category['category_id'] ?>" type="button" class="btn btn-sm btn-danger"><?= $textActionDeleteBtn; ?></button>
                                 </td>
                             </tr>
                         <?php }} ?>

@@ -31,4 +31,10 @@
     $textNoProducts = 'No products in this category!;';
     $textDrinksSelection = 'Drinks selection:';
     $textDishesSelection = 'Dishes selection:';
+
+    //Header
+    $textLogin = 'Log in';
+    $textLogout = 'Log out';
+    $textAdmin = 'Welcome, administrator!';
+    $textTopBar = 'Under Construction';
 ?>

@@ -1,11 +1,11 @@
 <div class="container-fluid">
         <div class="row mb-3">
-            <h2 class="card-title"> <?php echo $textSettings; ?> </h2>
+            <h2 class="card-title"> <?= $textSettings; ?> </h2>
             <form id="settingsForm" action="settingsCategories" method="post" enctype="multipart/form-data" class="row mb-3 g-1">
                 <!-- Number of tables start -->
                 <div class="row mb-3">
                     <div class="col-3">
-                        <label for="inputTablesCount"><?php echo $textTablesCount; ?></label>
+                        <label for="inputTablesCount"><?= $textTablesCount; ?></label>
                     </div>
                     <div class="col-6">
                         <div class="input-group">
@@ -15,10 +15,10 @@
                                 <?php 
                                 foreach ($allSettings as $setting => $value){
                                     if($setting == 'inputTablesCount'){?>
-                                        placeholder="<?php echo $value['setting_value']; ?>" 
-                                        value="<?php echo $value['setting_value']; ?>"
+                                        placeholder="<?= $value['setting_value']; ?>" 
+                                        value="<?= $value['setting_value']; ?>"
                                     <?php } else{ ?> 
-                                        placeholder="<?php echo $textTablesCount; ?>" 
+                                        placeholder="<?= $textTablesCount; ?>" 
                                     <?php }} ?>
                                
                                 id="inputTablesCount" 
@@ -35,16 +35,16 @@
                     <?php foreach($allStatuses as $status){ ?>
                         <div class="row mb-3">
                             <div class="col-3">
-                                <label for="inputCmsName"><?php echo $textStatusStage.' '.$status['id']; ?></label>
+                                <label for="inputCmsName"><?= $textStatusStage.' '.$status['id']; ?></label>
                             </div>
                             <div class="col-6">
                             <div class="input-group">
                                 <input 
                                     type="text" 
                                     class="form-control status" 
-                                    value="<?php echo $status['name']; ?>"
-                                    id="product_status_<?php echo $status['id']; ?>" 
-                                    data-status-id="<?php echo $status['id']; ?>" 
+                                    value="<?= $status['name']; ?>"
+                                    id="product_status_<?= $status['id']; ?>" 
+                                    data-status-id="<?= $status['id']; ?>" 
                                     required>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                 <!-- CMS Name start -->
                 <div class="row mb-3">
                     <div class="col-3">
-                        <label for="inputCmsName"><?php echo $textCmsName; ?></label>
+                        <label for="inputCmsName"><?= $textCmsName; ?></label>
                     </div>
                     <div class="col-6">
                         <div class="input-group">
@@ -67,10 +67,10 @@
                                 <?php 
                                 foreach ($allSettings as $setting => $value){
                                     if($setting == 'inputCmsName'){?>
-                                        placeholder="<?php echo $value['setting_value']; ?>" 
-                                        value="<?php echo $value['setting_value']; ?>"
+                                        placeholder="<?= $value['setting_value']; ?>" 
+                                        value="<?= $value['setting_value']; ?>"
                                     <?php } else{ ?> 
-                                        placeholder="<?php echo $textCmsName; ?>" 
+                                        placeholder="<?= $textCmsName; ?>" 
                                     <?php }} ?>
                                
                                 id="inputCmsName" 
@@ -83,7 +83,7 @@
                 <!-- CMS Logo start -->
                 <div class="row mb-3">
                     <div class="col-3">
-                        <label for="inputCmsLogo"><?php echo $textCmsLogo; ?></label>
+                        <label for="inputCmsLogo"><?= $textCmsLogo; ?></label>
                     </div>
                     <div class="col-6">
                         <div class="input-group">
@@ -95,10 +95,10 @@
                                 <?php 
                                     foreach ($allSettings as $setting => $value){
                                         if($setting == 'inputCmsLogo'){?>
-                                            placeholder="<?php echo $value['setting_value']; ?>" 
-                                            value="<?php echo $value['setting_value']; ?>"
+                                            placeholder="<?= $value['setting_value']; ?>" 
+                                            value="<?= $value['setting_value']; ?>"
                                         <?php } else{ ?> 
-                                            placeholder="<?php echo $textCmsLogo; ?>" 
+                                            placeholder="<?= $textCmsLogo; ?>" 
                                         <?php }} ?> 
                             >     
                         </div>
@@ -109,7 +109,7 @@
                 <!-- CMS Colors start -->
                 <div class="row mb-3">
                     <div class="col-3">
-                        <label for="inputCmsPrimaryColor"><?php echo $textCmsPrimaryColor; ?></label>
+                        <label for="inputCmsPrimaryColor"><?= $textCmsPrimaryColor; ?></label>
                     </div>
                     <div class="col-1">
                         <div class="input-group">
@@ -121,10 +121,10 @@
                                 <?php 
                                     foreach ($allSettings as $setting => $value){
                                         if($setting == 'inputCmsPrimaryColor'){?>
-                                            placeholder="<?php echo $value['setting_value']; ?>" 
-                                            value="<?php echo $value['setting_value']; ?>"
+                                            placeholder="<?= $value['setting_value']; ?>" 
+                                            value="<?= $value['setting_value']; ?>"
                                         <?php } else{ ?> 
-                                            placeholder="<?php echo $textCmsPrimaryColor; ?>" 
+                                            placeholder="<?= $textCmsPrimaryColor; ?>" 
                                         <?php }} ?> 
                             >     
                         </div>
@@ -132,7 +132,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-3">
-                        <label for="inputCmsSecondaryColor"><?php echo $textCmsSecondaryColor; ?></label>
+                        <label for="inputCmsSecondaryColor"><?= $textCmsSecondaryColor; ?></label>
                     </div>
                     <div class="col-1">
                         <div class="input-group">
@@ -144,10 +144,10 @@
                                 <?php 
                                     foreach ($allSettings as $setting => $value){
                                         if($setting == 'inputCmsSecondaryColor'){?>
-                                            placeholder="<?php echo $value['setting_value']; ?>" 
-                                            value="<?php echo $value['setting_value']; ?>"
+                                            placeholder="<?= $value['setting_value']; ?>" 
+                                            value="<?= $value['setting_value']; ?>"
                                         <?php } else{ ?> 
-                                            placeholder="<?php echo $textCmsSecondaryColor; ?>" 
+                                            placeholder="<?= $textCmsSecondaryColor; ?>" 
                                         <?php }} ?> 
                             >     
                         </div>
@@ -157,7 +157,7 @@
                 <hr>
                 <div class="row mb-3">
                     <div class="col-2">
-                        <button class="btn btn-primary"><?php echo $textSaveSettings; ?></button>
+                        <button class="btn btn-primary"><?= $textSaveSettings; ?></button>
                     </div>
                 </div>
             </form>

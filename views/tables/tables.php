@@ -1,18 +1,18 @@
-<h2 class="card-title"> <?php echo $textActiveTables; ?> </h2>
+<h2 class="card-title"> <?=$textActiveTables; ?> </h2>
 <div id="activeTables">
 <?php foreach($tablesList as $table){
         if($table['active'] === 1){?>
             <div class="resto-table">   
                 <div class="row">
-                    <?php echo $textTableId.$table['id'];?>
+                    <?= $textTableId.$table['id'];?>
                     <br>
                 </div>
                 <div class="row">
-                    <?php echo $textCapacity.$table['capacity'];?>
+                    <?= $textCapacity.$table['capacity'];?>
                     <br>
                 </div>
                 <div class="row">
-                    <span class="table-modal" id="tableModal-<?php echo $table['id'];?>" href="#"><?php echo $textOrderModal;?></span>
+                    <span class="table-modal" id="tableModal-<?= $table['id'];?>" href="#"><?= $textOrderModal;?></span>
                 </div>
             </div>
         <?php } ?>
@@ -20,23 +20,23 @@
 </div>
 
 <hr>
-<h2 class="card-title"> <?php echo $textFreeTables; ?> </h2>
+<h2 class="card-title"> <?= $textFreeTables; ?> </h2>
 <div id="tablesList">
     <?php foreach($tablesList as $table){
         if($table['active'] === 0){?>
         <div class="resto-table">   
             <div class="row">
-                <?php echo $textTableId.$table['id'];?>
+                <?= $textTableId.$table['id'];?>
                 <br>
             </div>
             <div class="row">
-                <?php echo $textCapacity.$table['capacity'];?>
+                <?= $textCapacity.$table['capacity'];?>
                 <br>
             </div>
             <div class="row">
                 <div class="form-check form-switch">
-                    <label class="form-check-label"><?php echo $textIsActive;?></label>
-                    <input class="form-check-input" type="checkbox" id="<?php echo $table['id'];?>">
+                    <label class="form-check-label"><?= $textIsActive;?></label>
+                    <input class="form-check-input" type="checkbox" id="<?= $table['id'];?>">
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
     <div class="row mb-3 mt-3">
         <div class="col-12">
             <div class="col-10">
-                <label for="inputNewTable"><?php echo $textNewTable; ?></label>
+                <label for="inputNewTable"><?= $textNewTable; ?></label>
                 <div class="col-3">
                     <div class="input-group">
                         <input 
@@ -59,13 +59,13 @@
                             type="number" 
                             id="inputNewTable" 
                             name="inputNewTable"
-                            placeholder="<?php echo $textTableCapacity; ?>" 
+                            placeholder="<?= $textTableCapacity; ?>" 
                         >     
                     </div>
                 </div>
             </div>
             <div class="col-2">
-                <button class="btn btn-primary"><?php echo $textAddTable; ?></button>
+                <button class="btn btn-primary"><?= $textAddTable; ?></button>
             </div>
         </div>
         

@@ -11,7 +11,7 @@
             </a>
         </div>
         <p id="copyrights">
-            <?php echo date("Y").' - '.$footerTitle; ?>
+            <?= date("Y").' - '.$footerTitle; ?>
         </p>
     </footer>
 

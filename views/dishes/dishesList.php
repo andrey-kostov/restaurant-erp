@@ -1,25 +1,25 @@
 <div class="container-fluid">
     <div class="row">
-        <h2><?php echo $textAddDishes; ?></h2>
+        <h2><?= $textAddDishes; ?></h2>
         <form action="dishesList" id="addDishesForm" method="post" enctype="multipart/form-data" class="row g-1">
             <div class="row mb-3">
                 <div class="col-8">
                     <div class="input-group">
-                        <label for="inputDishName" class=" col-12 form-label"><?php echo $textDishName; ?></label>
+                        <label for="inputDishName" class=" col-12 form-label"><?= $textDishName; ?></label>
                         <input 
                             type="text" 
-                            placeholder="<?php echo $textDishName; ?>" 
+                            placeholder="<?= $textDishName; ?>" 
                             class="form-control col-12" 
                             id="inputDishName" 
                             name="inputDishName" required>
                     </div>
                 </div>
                 <div class="col-4">
-                    <label for="inputDishName" class=" col-12 form-label"><?php echo $textDishCategory; ?></label>
+                    <label for="inputDishName" class=" col-12 form-label"><?= $textDishCategory; ?></label>
                     <select required class="form-select" id="dishCategory" name="dishCategory">
                         <?php if(isset($dishesCategories)){ ?>
                             <?php foreach ($dishesCategories as $category){ ?>   
-                                <option value="<?php echo $category['category_id'] ?>"><?php echo $category['category_name'] ?></option>
+                                <option value="<?= $category['category_id'] ?>"><?= $category['category_name'] ?></option>
                             <?php } ?>   
                         <?php } ?>
                     </select>
@@ -30,7 +30,7 @@
             <hr>
 
             <div class="row mb-3">
-                <h3><?php echo $textDishRecepie; ?></h3>
+                <h3><?= $textDishRecepie; ?></h3>
                 <div class="col-12">
                     <div class="input-group">
                         <textarea 
@@ -39,7 +39,7 @@
                             class="form-control" 
                             id="inputDishRecepie" 
                             name="inputDishRecepie"
-                            placeholder="<?php echo $textDishRecepie; ?>"
+                            placeholder="<?= $textDishRecepie; ?>"
                             required></textarea>
                     </div>
                 </div>
@@ -48,8 +48,8 @@
             <hr>
 
             <div class="row mb-3">
-                <h3><?php echo $textDishIngredients; ?></h3>
-                <input id="ingredientSuggest" class="form-control col-12 mb-3" placeholder="<?php echo $textDishIngredientsFind; ?>">
+                <h3><?= $textDishIngredients; ?></h3>
+                <input id="ingredientSuggest" class="form-control col-12 mb-3" placeholder="<?= $textDishIngredientsFind; ?>">
                 <table id="ingredientSuggestions" class="table col-12 mb-3">
                     <thead></thead>
                     <tbody></tbody>
@@ -57,11 +57,11 @@
                 <table class="table col-12 mb-3" id="ingredientsWrapper">
                 <thead>
                     <tr>
-                    <th scope="col"><?php echo $textIngredientName; ?></th>
-                    <th scope="col"><?php echo $textDishesIngredientId; ?></th>
-                    <th scope="col"><?php echo $textIngredientPrice; ?></th>
-                    <th scope="col"><?php echo $textDishQuantity; ?></th>
-                    <th scope="col"><?php echo $textDishPrice; ?></th>
+                    <th scope="col"><?= $textIngredientName; ?></th>
+                    <th scope="col"><?= $textDishesIngredientId; ?></th>
+                    <th scope="col"><?= $textIngredientPrice; ?></th>
+                    <th scope="col"><?= $textDishQuantity; ?></th>
+                    <th scope="col"><?= $textDishPrice; ?></th>
                     <th scope="col"></th>
                     </tr>
                 </thead>
@@ -73,24 +73,24 @@
             <hr>
 
             <div class="row mb-3">
-                <h3><?php echo $textDishPrice; ?></h3>
+                <h3><?= $textDishPrice; ?></h3>
                 <div class="col-2">
-                    <label class=" col-12 form-label"><?php echo $textDishPriceSuggested; ?></label>
+                    <label class=" col-12 form-label"><?= $textDishPriceSuggested; ?></label>
                     <span class="col-12" id="suggestedPrice">
                         <strong id="suggestedPriceValue">0</strong>
-                        <span id="suggestedPriceCurrency"><?php echo $storeCurrency; ?></span>
+                        <span id="suggestedPriceCurrency"><?= $storeCurrency; ?></span>
                     </span>
                 </div>
                 <div class="col-2">
                     <div class="col-12 input-group">
-                        <label for="inputDishPrice" class=" col-12 form-label"><?php echo $textDishPriceEnd; ?></label>
-                        <span class="input-group-text" id="basic-addon1"><?php echo $storeCurrency; ?></span>
+                        <label for="inputDishPrice" class=" col-12 form-label"><?= $textDishPriceEnd; ?></label>
+                        <span class="input-group-text" id="basic-addon1"><?= $storeCurrency; ?></span>
                         <input 
                             type="number"
                             step="0.01" 
                             aria-describedby="basic-addon1"
                             class="form-control" 
-                            placeholder="<?php echo $textDishPrice; ?>" 
+                            placeholder="<?= $textDishPrice; ?>" 
                             id="inputDishPrice" 
                             name="inputDishPrice" required>
 
@@ -102,7 +102,7 @@
 
             <div class="row mb-3">
                 <div class="col-2">
-                    <button id="submitDishForm" class="btn btn-primary"><?php echo $textActionSubmit; ?></button>
+                    <button id="submitDishForm" class="btn btn-primary"><?= $textActionSubmit; ?></button>
                 </div>
             </div>
         </form>
@@ -113,9 +113,9 @@
     $(document).on('change keyup paste','#ingredientSuggest',function(){
         var searchedVal = $(this).val();
         let suggestsHeader = '<tr>';
-            suggestsHeader += '<th scope="col"><?php echo $textIngredientName; ?></th>';
-            suggestsHeader += '<th scope="col"><?php echo $textDishesIngredientId; ?></th>';
-            suggestsHeader += '<th scope="col"><?php echo $textIngredientPrice; ?></th>';
+            suggestsHeader += '<th scope="col"><?= $textIngredientName; ?></th>';
+            suggestsHeader += '<th scope="col"><?= $textDishesIngredientId; ?></th>';
+            suggestsHeader += '<th scope="col"><?= $textIngredientPrice; ?></th>';
             suggestsHeader += '<th scope="col"></th>';
             suggestsHeader += '</tr>';
         
@@ -145,8 +145,8 @@
                             let suggestsRow = '<tr>';
                                 suggestsRow += '<td>'+ingName+'</td>';
                                 suggestsRow += '<td>'+ingId+'</td>';
-                                suggestsRow += '<td><strong>'+ingPrice+'</strong> <small><?php echo $storeCurrency; ?></small></td>';
-                                suggestsRow += '<td><button ingName ="'+ingName+'" ingId = "'+ingId+'" ingPrice = "'+ingPrice+'" class="addIngredient btn btn-secondary"><?php echo $textAddIngredients; ?></button></td>';
+                                suggestsRow += '<td><strong>'+ingPrice+'</strong> <small><?= $storeCurrency; ?></small></td>';
+                                suggestsRow += '<td><button ingName ="'+ingName+'" ingId = "'+ingId+'" ingPrice = "'+ingPrice+'" class="addIngredient btn btn-secondary"><?= $textAddIngredients; ?></button></td>';
                                 suggestsRow += '</tr>';
 
                             $('#ingredientSuggestions tbody').append(suggestsRow);
@@ -168,14 +168,14 @@
         let ingredientRow = '<tr class="ingredientRow" id="ingredient'+ingredientId+'">';
             ingredientRow += '<td class="ingredientName">'+ingredientName+'</td>';
             ingredientRow += '<td class="ingredientId">'+ingredientId+'</td>';
-            ingredientRow += '<td class="ingredientPricePerKilo"><strong>'+ingredientPrice+'</strong> <small><?php echo $storeCurrency; ?></small></td>';
-            ingredientRow += '<td class="ingredientQty"><input type="number" step="5" class="form-control ingredientQtyInput" placeholder="<?php echo $textDishQuantity; ?>" required></td>';
-            ingredientRow += '<td class="ingredientFinalPrice"><strong>0</strong> <small><?php echo $storeCurrency; ?></small></td>';
-            ingredientRow += '<td><button class="btn btn-danger removeIngredient"><?php echo $textActionDeleteBtn; ?></button></td>';
+            ingredientRow += '<td class="ingredientPricePerKilo"><strong>'+ingredientPrice+'</strong> <small><?= $storeCurrency; ?></small></td>';
+            ingredientRow += '<td class="ingredientQty"><input type="number" step="5" class="form-control ingredientQtyInput" placeholder="<?= $textDishQuantity; ?>" required></td>';
+            ingredientRow += '<td class="ingredientFinalPrice"><strong>0</strong> <small><?= $storeCurrency; ?></small></td>';
+            ingredientRow += '<td><button class="btn btn-danger removeIngredient"><?= $textActionDeleteBtn; ?></button></td>';
             ingredientRow += '/<tr>';
         
         if($('#ingredient'+ingredientId).length > 0){
-            alert('<?php echo $alertIngredientExists; ?>');
+            alert('<?= $alertIngredientExists; ?>');
         }else{
             $('#ingredientsWrapper tbody').append(ingredientRow);
         }
